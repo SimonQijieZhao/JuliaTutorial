@@ -14,6 +14,8 @@
   + [Comment code](#comment-code)
   + [Control flow](#control-flow)
     - [if-elseif-else-end](#if-elseif-else-end)
+  + [Operators](#operators)
+	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Run shell command in Julia](#run-shell-command-in-julia)
   + [Miscellaneous](#miscellaneous)
     - [Compound expressions](#compound-expressions)
@@ -210,6 +212,35 @@ end
 Note that **elseif** and **else** are optional, and the conditions
 must be expressions that can be evaluated to be boolean values such as
 **true** and **false**.
+
+### Operators ###
+
+#### Special note for logical operators ####
+
+The last entry in a conditional chain formed by the logical operators
+**&&** and **||** can be a type of non-boolean expression, so that the
+value of the whole chain expression will be either a boolean value
+(**false** for **&&**, and **true** for **||**) or the value of the
+last entry, depending on whether the last entry got evaluated or not,
+which is determined by the short-circuit property of logical
+operators.  For example,
+
+```Julia
+a = (false || (x = "Hello"))  # a will be "Hello"
+a = (true || (x = "Hello"))   # a will be true
+```
+
+which can be re-written with one-line **if** statements as:
+
+```Julia
+a = (if !false x = "Hello" end)
+a = (if false x = "Hello" else true end)
+```
+
+And I think no real code would be written this way.  It is only for
+illustration.  And the pratical usage of this behaviour of logical
+operators are well demonstrated by the factorial routine in the
+[Julia manual - Short-Circuit Evaluation](http://docs.julialang.org/en/latest/manual/control-flow/#short-circuit-evaluation)
 
 
 ### Run shell command in Julia ###
