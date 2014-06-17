@@ -317,3 +317,10 @@ below are borrowed from
 
 
 ## Useful resources ##
+
+* [The Offical Website for Julia Programming Language](http://julialang.org/)
+* [The Latest Manual for Julia Lang](http://docs.julialang.org/en/latest/manual/)
+* [Julia Bloggers](http://www.juliabloggers.com/) gathers blogs about
+  Julia.  One can also
+  [submit their RSS feed](http://www.juliabloggers.com/julia-bloggers-submit-rss-feed/)
+  for the specific blogs related to Julia
