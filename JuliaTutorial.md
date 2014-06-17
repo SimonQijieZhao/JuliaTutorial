@@ -13,6 +13,7 @@
   + [Play with Julia script file](#play-with-julia-script-file)
   + [Comment code](#comment-code)
   + [Control flow](#control-flow)
+    - [if-elseif-else-end](#if-elseif-else-end)
   + [Run shell command in Julia](#run-shell-command-in-julia)
   + [Miscellaneous](#miscellaneous)
     - [Compound expressions](#compound-expressions)
@@ -189,6 +190,26 @@ A Julia script file has **.jl** as its extension.
 
 
 ### Control flow ###
+
+#### if-elseif-else-end ####
+
+Conditional evaluation can be obtained by the **if-elseif-else-end**
+construct.  For example,
+
+```Julia
+x = 1
+if x > 0
+  y = x * 2
+elseif x < 0
+  y = -x * 2
+else
+  y = 1
+end
+```
+
+Note that **elseif** and **else** are optional, and the conditions
+must be expressions that can be evaluated to be boolean values such as
+**true** and **false**.
 
 
 ### Run shell command in Julia ###
