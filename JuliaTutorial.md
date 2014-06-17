@@ -14,6 +14,7 @@
   + [Comment code](#comment-code)
   + [Control flow](#control-flow)
     - [if-elseif-else-end](#if-elseif-else-end)
+	- [while and for loops](#while-and-for-loops)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Run shell command in Julia](#run-shell-command-in-julia)
@@ -212,6 +213,12 @@ end
 Note that **elseif** and **else** are optional, and the conditions
 must be expressions that can be evaluated to be boolean values such as
 **true** and **false**.
+
+
+#### while and for loops ####
+
+
+
 
 ### Operators ###
 
