@@ -34,7 +34,8 @@ sudo apt-get install julia
 If you are on an older Ubuntu (before Ubuntu 14.04), then you need to
 use the
 [Julia PPA (Personal Package Archives)](https://launchpad.net/~staticfloat)
-to sync with the latest stable version of Julia[^3].
+to sync with the latest stable version of Julia (See
+[Julia Downloads](http://julialang.org/downloads/) for more details).
 
 ```Shell
 sudo add-apt-repository ppa:staticfloat/juliareleases
@@ -50,7 +51,9 @@ sudo apt-get install julia
 ##### IJulia #####
 
 To use [IJulia](https://github.com/JuliaLang/IJulia.jl), you have to
-install [IPython](http://ipython.org/) first[^2]:
+install [IPython](http://ipython.org/) first (See
+[Installing IPython](http://ipython.org/install.html) for more
+details.):
 
 ```Shell
 sudo apt-get install ipython-notebook python-matplotlib \
@@ -213,7 +216,9 @@ single compound expression out of several sub-expressions.  In other
 words, it can be considered as a small one-time-use function with the
 value of the last sub-expression as its return value.
 
-The four ways we can write a compound expression are[^1]:
+The four ways we can write a compound expression are (The examples
+below are borrowed from
+[Julia manual - Compound Expressions](http://docs.julialang.org/en/latest/manual/control-flow/#compound-expressions).):
 
 1.  "**begin...end**" in a single line:
 
@@ -253,11 +258,3 @@ The four ways we can write a compound expression are[^1]:
 
 
 ## Useful resources ##
-
-
-[^1]: The examples are borrowed from
-[Julia manual - Compound Expressions](http://docs.julialang.org/en/latest/manual/control-flow/#compound-expressions).
-
-[^2]: See [Installing IPython](http://ipython.org/install.html) for more details.
-
-[^3]: See [Julia Downloads](http://julialang.org/downloads/)
