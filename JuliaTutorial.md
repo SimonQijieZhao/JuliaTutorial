@@ -217,6 +217,52 @@ must be expressions that can be evaluated to be boolean values such as
 
 #### while and for loops ####
 
+**while...end** loops are like:
+
+```Julia
+i = 1
+while i <= 5
+  println(i)
+  i += 1
+end
+```
+
+And **for...end** loops are like:
+
+```Julia
+for i = 1:5
+  println(i)
+end
+```
+
+which is equivalent to
+
+```Julia
+for i in 1:5
+  println(i)
+end
+```
+
+**break** and **continue** are also the same in Julia as the other
+programming languages such as C.
+
+The special usage of **for** loops below:
+
+```Julia
+for i = 1:3, j in 1:5
+  println(i, ", " , j)
+end
+```
+
+is a syntactic sugar of:
+
+```Julia
+for i = 1:3
+  for j = 1:5
+    println(i, ", " , j)
+  end
+end
+```
 
 
 
