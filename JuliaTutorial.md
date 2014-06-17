@@ -27,7 +27,7 @@
 
 To install the current stable version of Julia, just type:
 
-```bash
+```Shell
 sudo apt-get install julia
 ```
 
@@ -36,7 +36,7 @@ use the
 [Julia PPA (Personal Package Archives)](https://launchpad.net/~staticfloat)
 to sync with the latest stable version of Julia[^3].
 
-```bash
+```Shell
 sudo add-apt-repository ppa:staticfloat/juliareleases
 sudo add-apt-repository ppa:staticfloat/julia-deps
 sudo apt-get update
@@ -52,7 +52,7 @@ sudo apt-get install julia
 To use [IJulia](https://github.com/JuliaLang/IJulia.jl), you have to
 install [IPython](http://ipython.org/) first[^2]:
 
-```bash
+```Shell
 sudo apt-get install ipython-notebook python-matplotlib \
                      python-scipy python-pandas \
 					 python-sympy python-nose
@@ -60,7 +60,7 @@ sudo apt-get install ipython-notebook python-matplotlib \
 
 Thereafter, in shell terminal, enter:
 
-```bash
+```Shell
 julia
 ```
 
@@ -75,7 +75,7 @@ Pkg.add("PyPlot")
 to install IJulia and related packages, and type **Ctrl-d** to quit
 the session.  Finally, you can type in shell terminal:
 
-```bash
+```Shell
 ipython notebook --profile julia
 ```
 
@@ -93,7 +93,7 @@ to run Julia in IJulia notebook.
 
 In shell terminal, just type:
 
-```bash
+```Shell
 julia
 ```
 
@@ -147,14 +147,14 @@ A Julia script file has **.jl** as its extension.
 2.  To execute a Julia script in shell, for example, previous
     "**hello.jl**", type:
 
-    ```bash
+    ```Shell
     julia hello.jl
     ```
 
 3.  To execute a short code within shell command line, we could use
     the option "**-e**" for command "**julia**":
 
-    ```bash
+    ```Shell
     julia -e 'println("Hello, world!")'
     ```
 
@@ -170,7 +170,7 @@ A Julia script file has **.jl** as its extension.
 
     then in shell, type:
 
-    ```bash
+    ```Shell
     julia hello2.jl Simon
     ```
 
