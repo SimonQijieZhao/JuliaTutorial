@@ -10,6 +10,7 @@
 * [A quick tour of Julia](#a-quick-tour-of-julia)
   + [Enter and quit Julia interactive session](#enter-and-quit-julia-interactive-session)
   + [Something special to the REPL](#something-special-to-the-repl)
+  + [Get help in REPL](#get-help-in-repl)
   + [Play with Julia script file](#play-with-julia-script-file)
   + [Comment code](#comment-code)
   + [Control flow](#control-flow)
@@ -128,6 +129,34 @@ or **Ctrl-d** to quit back to shell.
 
 4.  You can type "**julia -q**" to suppress the display of startup
     banner when lauch the REPL.
+
+
+### Get help in REPL ###
+
+With the **help()** function, one can query the documentation for a
+specific function, macro, or variable.  For example,
+
+```Julia
+help(println)
+```
+
+Alternatively, we can use **?** as a short hand for the **help()**
+function:
+
+```Julia
+?println
+```
+
+If you are not sure how to use **help()**, just type:
+
+```Julia
+?help
+```
+
+for more details.
+
+**apropos()** is a more flexible function that can be used to search
+documentation for functions related to a specific string.
 
 
 ### Play with Julia script file ###
