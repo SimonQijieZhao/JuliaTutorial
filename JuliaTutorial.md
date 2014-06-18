@@ -275,15 +275,32 @@ function greaterThan(x, y)
 end
 ```
 
-and used as:
+and the **return** is optional, which means it can be written as:
 
 ```Julia
-a = 1
-b = 2
-if greaterThan(a, b)
-  println("a > b")
+function greaterThan(x, y)
+  x > y
 end
 ```
+
+Because value of the last evaluated expression in the body of a function
+will be returned by default, as the return value of that function,
+unless some value somewhere is explictly returned by **return**.
+
+If the body of a function consists of only one single expression, the
+function can also be defined like:
+
+```Julia
+greaterThan(x, y) = return x > y
+```
+
+or equivalently:
+
+```Julia
+greaterThan(x, y) = x > y
+```
+
+
 
 
 
