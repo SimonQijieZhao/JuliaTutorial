@@ -227,7 +227,7 @@ while i <= 5
 end
 ```
 
-And **for...end** loops are like:
+And the **for...end** loop do the same thing is like:
 
 ```Julia
 for i = 1:5
