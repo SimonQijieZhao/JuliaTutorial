@@ -15,6 +15,7 @@
   + [Control flow](#control-flow)
     - [if-elseif-else-end](#if-elseif-else-end)
 	- [while and for loops](#while-and-for-loops)
+  + [Function](#function)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Run shell command in Julia](#run-shell-command-in-julia)
@@ -261,6 +262,26 @@ for i = 1:3
   for j = 1:5
     println(i, ", " , j)
   end
+end
+```
+
+### Function ###
+
+Functions are defined like:
+
+```Julia
+function greaterThan(x, y)
+  return x > y
+end
+```
+
+and used as:
+
+```Julia
+a = 1
+b = 2
+if greaterThan(a, b)
+  println("a > b")
 end
 ```
 
