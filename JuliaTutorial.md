@@ -391,6 +391,39 @@ greaterThan = (x, y) -> x > y
 which is defined by assigning an anonymous function to the variable
 **greaterThan**.
 
+We can also pass an anonymous function to another function that take
+functions as its arguments, for example with the previous **apply**
+function:
+
+```Julia
+apply((x, y) -> begin
+        if x > y
+		  println(x, " > ", y)
+		else
+		  println(x, " <= ", y)
+		end
+      end,
+      1,
+	  2)
+```
+
+which can be written in a more compact way as:
+
+```Julia
+apply(1, 2) do x, y
+  if x > y
+    println(x, " > ", y)
+  else
+    println(x, " <= ", y)
+  end
+end
+```
+
+The **do...end** is another syntactic sugar that creates an anonymous
+function with arguments afterwards (here are **x** and **y**), to be
+passed as the first argument to the function before it (here is the
+**apply** function), where the rest arguments will be the second, the
+third one and so on.
 
 
 #### Return multiple values ####
