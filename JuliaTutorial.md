@@ -15,12 +15,11 @@
   + [Control flow](#control-flow)
     - [if-elseif-else-end](#if-elseif-else-end)
 	- [while and for loops](#while-and-for-loops)
+  + [Compound expressions](#compound-expressions)
   + [Function](#function)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Run shell command in Julia](#run-shell-command-in-julia)
-  + [Miscellaneous](#miscellaneous)
-    - [Compound expressions](#compound-expressions)
 * [Write your own package](#write-your-own-package)
 * [Useful resources](#useful-resources)
 
@@ -265,6 +264,50 @@ for i = 1:3
 end
 ```
 
+### Compound expressions ###
+
+In Julia, we can use "**begin...end**" or "**(;)**" chains to form a
+single compound expression out of several sub-expressions.  In other
+words, it can be considered as a small one-time-use function with the
+value of the last sub-expression as its return value.
+
+The four ways we can write a compound expression are (The examples
+below are borrowed from
+[Julia manual - Compound Expressions](http://docs.julialang.org/en/latest/manual/control-flow/#compound-expressions).):
+
+1.  "**begin...end**" in a single line:
+
+    ```Julia
+    z = begin x = 1; y = 2; x + y end
+    ```
+
+2.  "**begin...end**" cross multiple lines:
+
+    ```Julia
+	z = begin
+	  x = 1
+	  y = 2
+	  x + y
+	end
+    ```
+
+3.  "**(;)**" in a single line:
+
+    ```Julia
+	z = (x = 1; y = 2; x + y)
+    ```
+
+4.  "**(;)**" cross multiple lines:
+
+    ```Julia
+	z = (
+	  x = 1;
+	  y = 2;
+	  x + y
+	)
+    ```
+
+
 ### Function ###
 
 Functions are defined like:
@@ -349,51 +392,6 @@ can assign the output to a variable by function **readall()**:
 ```Julia
 a = readall(`echo Hello`)
 ```
-
-### Miscellaneous ###
-
-#### Compound expressions ####
-
-In Julia, we can use "**begin...end**" or "**(;)**" chains to form a
-single compound expression out of several sub-expressions.  In other
-words, it can be considered as a small one-time-use function with the
-value of the last sub-expression as its return value.
-
-The four ways we can write a compound expression are (The examples
-below are borrowed from
-[Julia manual - Compound Expressions](http://docs.julialang.org/en/latest/manual/control-flow/#compound-expressions).):
-
-1.  "**begin...end**" in a single line:
-
-    ```Julia
-    z = begin x = 1; y = 2; x + y end
-    ```
-
-2.  "**begin...end**" cross multiple lines:
-
-    ```Julia
-	z = begin
-	  x = 1
-	  y = 2
-	  x + y
-	end
-    ```
-
-3.  "**(;)**" in a single line:
-
-    ```Julia
-	z = (x = 1; y = 2; x + y)
-    ```
-
-4.  "**(;)**" cross multiple lines:
-
-    ```Julia
-	z = (
-	  x = 1;
-	  y = 2;
-	  x + y
-	)
-    ```
 
 
 
