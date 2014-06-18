@@ -17,6 +17,7 @@
 	- [while and for loops](#while-and-for-loops)
   + [Compound expressions](#compound-expressions)
   + [Function](#function)
+    - [Return multiple values](#return-multiple-values)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Run shell command in Julia](#run-shell-command-in-julia)
@@ -310,7 +311,7 @@ below are borrowed from
 
 ### Function ###
 
-Functions are defined like:
+Functions are defined with **function...end**:
 
 ```Julia
 function greaterThan(x, y)
@@ -318,7 +319,9 @@ function greaterThan(x, y)
 end
 ```
 
-and the **return** is optional, which means it can be written as:
+Here we define a function which we can refer it by the name
+**greaterThan**.  And the **return** in the function is optional,
+which means it can be written as:
 
 ```Julia
 function greaterThan(x, y)
@@ -326,9 +329,45 @@ function greaterThan(x, y)
 end
 ```
 
-Because value of the last evaluated expression in the body of a function
-will be returned by default, as the return value of that function,
-unless some value somewhere is explictly returned by **return**.
+This is because that in Julia, the value of the last evaluated
+expression in the body of a function will be considered as the return
+value of that function by default, unless some other value is
+explictly taken as return value by **return** somewhere before the
+last expression.
+
+In Julia, function is treated the same as any other object.  That is,
+they can be assigned to variables, used as arguments to other
+functions, and returned as values, besides called as functions with
+the parenthesis form.  All we need is something we can refer to it,
+such as a name.
+
+We can call a function with its name followed by the actual arugment
+enclosed in parentheses, or by the **apply** function:
+
+```Julia
+a = 1
+b = 2
+if greaterThan(a, b)
+  println("a > b")
+else
+  println("a <= b")
+end
+```
+
+which is equivalent to:
+
+```Julia
+a = 1
+b = 2
+if apply(greaterThan, a, b)
+  println("a > b")
+else
+  println("a <= b")
+end
+```
+
+The **apply** function takes another function as its first argument,
+and then apply that function to the remain arguments of itself.
 
 If the body of a function consists of only one single expression, the
 function can also be defined like:
@@ -350,11 +389,11 @@ greaterThan = (x, y) -> x > y
 ```
 
 which is defined by assigning an anonymous function to the variable
-**greaterThan**.  In Julia, function is treated the same as any other
-object.  That is, they can be assigned to variables, used as arguments
-to other functions, and returned as values, besides called as
-functions with the parenthesis form.
+**greaterThan**.
 
+
+
+#### Return multiple values ####
 
 
 ### Operators ###
