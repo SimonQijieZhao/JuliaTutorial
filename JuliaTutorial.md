@@ -343,7 +343,17 @@ or equivalently:
 greaterThan(x, y) = x > y
 ```
 
+or even:
 
+```Julia
+greaterThan = (x, y) -> x > y
+```
+
+which is defined by assigning an anonymous function to the variable
+**greaterThan**.  In Julia, function is treated the same as any other
+object.  That is, they can be assigned to variables, used as arguments
+to other functions, and returned as values, besides called as
+functions with the parenthesis form.
 
 
 
