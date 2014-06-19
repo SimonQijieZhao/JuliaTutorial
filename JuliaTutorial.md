@@ -23,6 +23,8 @@
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Run shell command in Julia](#run-shell-command-in-julia)
 * [Write your own package](#write-your-own-package)
+* [Some interesting facts](#some-interesting-facts)
+  + [The number of available packages](#the-number-of-available-packages)
 * [Useful resources](#useful-resources)
 
 ## Introduction ##
@@ -510,6 +512,31 @@ a = readall(`echo Hello`)
 
 
 ## Write your own package ##
+
+
+## Some interesting facts ##
+
+### The number of available packages ###
+
+Julia is still young.  The number of available packages is small
+compared to R.  However, they grow rapidly.  Until 2014-06-19, there
+are 279 packages available for Julia, and 5323 packages available for
+R.
+
+We can get the number of available packages of Julia and R,
+respectively by the following Linux shell scripts.
+
+```Shell
+# Get the number of available packages of Julia
+curl -s https://raw.githubusercontent.com/JuliaLang/julia/master/doc/packages/packagelist.rst \
+| grep "Maintainer" | wc -l
+```
+
+```Shell
+# Get the number of available packages of R
+expr $(curl -s http://cran.r-project.org/src/contrib/Archive/ | sed -n \
+'/Parent Directory/,$ p' | grep -c "</a>") - 1
+```
 
 
 ## Useful resources ##
