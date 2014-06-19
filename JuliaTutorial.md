@@ -520,3 +520,4 @@ a = readall(`echo Hello`)
   Julia.  One can also
   [submit their RSS feed](http://www.juliabloggers.com/julia-bloggers-submit-rss-feed/)
   for the specific blogs related to Julia
+* [List of Available Julia Packages](http://docs.julialang.org/en/latest/packages/packagelist/)
