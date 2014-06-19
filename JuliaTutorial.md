@@ -158,6 +158,9 @@ for more details.
 **apropos()** is a more flexible function that can be used to search
 documentation for functions related to a specific string.
 
+And the blog [Julia Helps](http://www.juliabloggers.com/julia-helps/)
+gives a good summary about getting help from Julia itself.
+
 
 ### Play with Julia script file ###
 
