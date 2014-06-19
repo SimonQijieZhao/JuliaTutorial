@@ -29,6 +29,9 @@
 
 ## Introduction ##
 
+[Julia](http://julialang.org/) is a fast dynamic programming language
+for technical computing.
+
 ## Installation ##
 
 ### On Ubuntu ###
