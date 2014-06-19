@@ -345,6 +345,9 @@ below are borrowed from
 
 ### Function ###
 
+- [ ] maybe need to be more concise like
+  [Compound expressions](#compound-expressions)
+
 Functions are defined with **function...end**:
 
 ```Julia
