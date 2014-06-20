@@ -243,8 +243,20 @@ type from its previous one, excpet that in a local scope, we can add a
 type annotation to a variable to restrain it from being assigned to a
 value of a different type.
 
-Note: When in the REPL, we are in a global scope, and a variable
+**Note**: When in the REPL, we are in a global scope, and a variable
 defined in a function is in a local scope.
+
+Examples:
+
+```Julia
+x = 1            # introduce a varialbe named x
+x += 1           # now x equals to 2
+x = "Hello"      # x is re-assigned to a string "Hello"
+
+function foo()
+  x::Int32 = 10  # prevent x from being assigned to values of non-Int32
+end
+```
 
 
 ### Control flow ###
