@@ -13,6 +13,7 @@
   + [Get help in REPL](#get-help-in-repl)
   + [Play with Julia script file](#play-with-julia-script-file)
   + [Comment code](#comment-code)
+  + [Variables](#variables)
   + [Control flow](#control-flow)
     - [if-elseif-else-end](#if-elseif-else-end)
 	- [while and for loops](#while-and-for-loops)
@@ -228,6 +229,19 @@ A Julia script file has **.jl** as its extension.
     considered as comment.
 
 2.  **#=** and **=#** are used for multi-line comments.
+
+
+### Variables ###
+
+Like other languages, variable names in Julia must also begin with a
+letter in English alphabet, or underscore.
+
+As a dynamic programming language, there is no restriction for a
+variable in Julia to be of a fixed type after introduced in a scope.
+In other words, a variable can be assigned to a value of different
+type from its previous one, excpet that in a local scope, we can add a
+type annotation to a variable to restrain it from being assigned to a
+value of a different type.
 
 
 ### Control flow ###
