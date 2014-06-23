@@ -289,10 +289,16 @@ A few useful functions that can work with these basic built-in types:
 |`typemin(x)`|The lowest value representable by the given numeric type|`typemin(Int32)` returns `-2147483648`|
 |`typemax(x)`|The highest value representable by the given numeric type|`typemax(Int32)` returns `2147483647`|
 |`bits(x)`|A string giving the literal bit representation of a number|`bits(0x7)` returns `"00000111"`|
+|`eps(x)`|The distance between `x` and the next larger representable floating-point value of the same type as `x`|`eps(Float32)` returns 1.1920929f-7|
 
 And there are a same number of functions with the same names but in
 lower case for converting a value to corresponding numeric types.  For
 example, `uint64(x)` converts `x` to `Uint64` data type.
+
+In addition, a set of special floating-point values is provided, such
+as `Inf`, `-Inf`, `NaN`.  More details can be found at
+[Julia Manual - Integers and Floating-Point Numbers](http://docs.julialang.org/en/latest/manual/integers-and-floating-point-numbers/)
+
 
 
 ### Control flow ###
