@@ -14,6 +14,7 @@
   + [Play with Julia script file](#play-with-julia-script-file)
   + [Comment code](#comment-code)
   + [Variables](#variables)
+  + [Built-in numeric primitives](#built-in-numeric-primitives)
   + [Control flow](#control-flow)
     - [if-elseif-else-end](#if-elseif-else-end)
 	- [while and for loops](#while-and-for-loops)
@@ -257,6 +258,41 @@ function foo()
   x::Int32 = 10  # prevent x from being assigned to values of non-Int32
 end
 ```
+
+### Built-in numeric primitives ###
+
+For basic arithmetic, Julia provides a series of built-in numeric
+types, with explicit names telling how many bits they use to represent
+a number:
+
+```Julia
+Int8        Uint8
+Int16       Uint16
+Int32       Uint32
+Int64       Uint64
+Int128      Uint128
+
+Bool  # false or true with 8 bits
+Char  # Unicode characters with 32 bits
+
+# There is no type named Double as in other programming languages
+Float16
+Float32
+Float64
+```
+
+A few useful functions that can work with these basic built-in types:
+
+|Function|Description|Example|
+|:-------|:----------|:------|
+|`typeof(x)`|The exact concrete type of `x`|`typeof(10.04)` returns `Float64`|
+|`typemin(x)`|The lowest value representable by the given numeric type|`typemin(Int32)` returns `-2147483648`|
+|`typemax(x)`|The highest value representable by the given numeric type|`typemax(Int32)` returns `2147483647`|
+|`bits(x)`|A string giving the literal bit representation of a number|`bits(0x7)` returns `"00000111"`|
+
+And there are a same number of functions with the same names but in
+lower case for converting a value to corresponding numeric types.  For
+example, `uint64(x)` converts `x` to `Uint64` data type.
 
 
 ### Control flow ###
