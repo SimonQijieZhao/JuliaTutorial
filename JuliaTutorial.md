@@ -137,7 +137,20 @@ or **Ctrl-d** to quit back to shell.
     matter if it is suppressed or not.
 
 4.  You can type "**julia -q**" to suppress the display of startup
-    banner when lauch the REPL.
+    banner (like below) when lauch the REPL.
+
+    ```
+                   _
+       _       _ _(_)_     |  A fresh approach to technical computing
+      (_)     | (_) (_)    |  Documentation: http://docs.julialang.org
+       _ _   _| |_  __ _   |  Type "help()" to list help topics
+      | | | | | | |/ _` |  |
+      | | |_| | | | (_| |  |  Version 0.2.1 (2014-02-11 06:30 UTC)
+     _/ |\__'_|_|_|\__'_|  | 
+    |__/                   |  x86_64-linux-gnu
+    
+    
+    ```
 
 
 ### Get help in REPL ###
