@@ -16,6 +16,7 @@
   + [Variables](#variables)
   + [Built-in numeric primitives](#built-in-numeric-primitives)
   + [Elementary mathematical operations and functions](#elementary-mathematical-operations-and-functions)
+  + [Support for complex and rational numbers](#support-for-complex-and-rational-numbers)
   + [Control flow](#control-flow)
     - [if-elseif-else-end](#if-elseif-else-end)
 	- [while and for loops](#while-and-for-loops)
@@ -329,9 +330,33 @@ programming languages, such as C:
 Special note should be taken when comparing `Inf`, `NaN`, see
 [Julia Manual - Mathematical Operations and Elementary Functions](http://docs.julialang.org/en/latest/manual/mathematical-operations/#numeric-comparisons)
 
+Julia allows chained comparisons, which can be re-written by `&&`:
+
+```Julia
+1 < 2 <= 3 > 0 # equals to: 1 < 2 && 2 <= 3 && 3 > 0
+```
+
+A list of useful functions frequently used in mathematics can be found
+at
+[Julia Manual - Mathematical Operations and Elementary Functions](http://docs.julialang.org/en/latest/manual/mathematical-operations/#elementary-functions)
 
 
+### Support for complex and rational numbers ###
 
+Complex and rational number are pre-defined types in Julia.
+
+```Julia
+-1 + 2im  # a complex number, "im" denotes imaginary part
+3//4      # a rational number equals to 0.75
+```
+
+Corresponding arithmetic operations are also defined for complex and
+rational numbers.
+
+```Julia
+(-1 + 2im)*(-1 - 2im) # 5 + 0im
+3//4 * 1//3           # 1//4
+```
 
 
 ### Control flow ###
