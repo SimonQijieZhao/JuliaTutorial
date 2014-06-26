@@ -12,6 +12,7 @@
   + [Something special to the REPL](#something-special-to-the-repl)
   + [Get help in REPL](#get-help-in-repl)
   + [Play with Julia script file](#play-with-julia-script-file)
+  + [Run shell command in Julia](#run-shell-command-in-julia)
   + [Comment code](#comment-code)
   + [Variables](#variables)
   + [Built-in numeric primitives](#built-in-numeric-primitives)
@@ -25,7 +26,6 @@
     - [Return multiple values](#return-multiple-values)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
-  + [Run shell command in Julia](#run-shell-command-in-julia)
 * [Write your own package](#write-your-own-package)
 * [Some interesting facts](#some-interesting-facts)
   + [The number of available packages](#the-number-of-available-packages)
@@ -237,6 +237,23 @@ A Julia script file has **.jl** as its extension.
     ```
 
     will output "**Hello, Simon!**".
+
+
+### Run shell command in Julia ###
+
+A shell command should be wrapped in backticks "**`**", and we can use
+function **run()** to run the command within them.  For example,
+
+```Julia
+run(`echo Hello`)
+```
+
+However, the output will automatically be dumped to the screen.  We
+can assign the output to a variable by function **readall()**:
+
+```Julia
+a = readall(`echo Hello`)
+```
 
 
 ### Comment code ###
@@ -639,23 +656,6 @@ And I think no real code would be written this way.  It is only for
 illustration.  And the pratical usage of this behaviour of logical
 operators are well demonstrated by the factorial routine in the
 [Julia manual - Short-Circuit Evaluation](http://docs.julialang.org/en/latest/manual/control-flow/#short-circuit-evaluation)
-
-
-### Run shell command in Julia ###
-
-A shell command should be wrapped in backticks "**`**", and we can use
-function **run()** to run the command within them.  For example,
-
-```Julia
-run(`echo Hello`)
-```
-
-However, the output will automatically be dumped to the screen.  We
-can assign the output to a variable by function **readall()**:
-
-```Julia
-a = readall(`echo Hello`)
-```
 
 
 
