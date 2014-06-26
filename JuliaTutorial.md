@@ -15,6 +15,7 @@
   + [Comment code](#comment-code)
   + [Variables](#variables)
   + [Built-in numeric primitives](#built-in-numeric-primitives)
+  + [Elementary mathematical operations and functions](#elementary-mathematical-operations-and-functions)
   + [Control flow](#control-flow)
     - [if-elseif-else-end](#if-elseif-else-end)
 	- [while and for loops](#while-and-for-loops)
@@ -298,6 +299,38 @@ example, `uint64(x)` converts `x` to `Uint64` data type.
 In addition, a set of special floating-point values is provided, such
 as `Inf`, `-Inf`, `NaN`.  More details can be found at
 [Julia Manual - Integers and Floating-Point Numbers](http://docs.julialang.org/en/latest/manual/integers-and-floating-point-numbers/)
+
+
+### Elementary mathematical operations and functions ###
+
+The basic arthmetic and bitwise operations are similar to other
+programming languages, such as C:
+
+```Julia
++ - * /
+^ # power
+% # remainder
+
+! # negation
+
+~ & | $ # bitwise not, and, or, xor
+
+>>> # logical shift right
+>>  # arithmetic shift right
+<<  # logical/arithmetic shift left
+
+# corresponding updating operators
++=  -=  *=  /= %=  ^=  &=  |=  $=  >>>=  >>=  <<=
+
+# comparisons
+== != < <= > >=
+```
+
+Special note should be taken when comparing `Inf`, `NaN`, see
+[Julia Manual - Mathematical Operations and Elementary Functions](http://docs.julialang.org/en/latest/manual/mathematical-operations/#numeric-comparisons)
+
+
+
 
 
 
