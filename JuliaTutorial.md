@@ -327,6 +327,7 @@ A few useful functions that can work with these basic built-in types:
 |`typemin(x)`|The lowest value representable by the given numeric type|`typemin(Int32)` returns `-2147483648`|
 |`typemax(x)`|The highest value representable by the given numeric type|`typemax(Int32)` returns `2147483647`|
 |`bits(x)`|A string giving the literal bit representation of a number|`bits(0x7)` returns `"00000111"`|
+|`num2hex(x)`|A hexadecimal string of the binary representation of a floating point number|`num2hex(1.0)` returns `"3ff0000000000000"`|
 |`eps(x)`|The distance between `x` and the next larger representable floating-point value of the same type as `x`|`eps(Float32)` returns 1.1920929f-7|
 
 And there are a same number of functions with the same names but in
