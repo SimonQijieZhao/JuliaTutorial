@@ -16,6 +16,7 @@
   + [Comment code](#comment-code)
   + [Variables](#variables)
   + [Built-in numeric primitives](#built-in-numeric-primitives)
+  + [Array](#array)
   + [String](#string)
   + [Elementary mathematical operations and functions](#elementary-mathematical-operations-and-functions)
   + [Support for complex and rational numbers](#support-for-complex-and-rational-numbers)
@@ -339,6 +340,14 @@ as `Inf`, `-Inf`, `NaN`.  More details can be found at
 [Julia Manual - Integers and Floating-Point Numbers](http://docs.julialang.org/en/latest/manual/integers-and-floating-point-numbers/)
 
 
+### Array ###
+
+An array in Julia is indexed from 1, not 0.  And the last element can
+be accessed by using index `end`.  Range indexing can be done by using
+`:`, such as `1:5` (range `[1, 2, 3, 4, 5]`) or `2:2:10` (range
+`[2, 4, 6, 8, 10]`)
+
+
 ### String ###
 
 String literals are denoted by being enclosed in double quotes, or
@@ -352,6 +361,9 @@ julia> c = "Escape the quotes with \"\\\" would be less readable";
 julia> b == c
 true
 ```
+
+Indexing a specific character in a string is like in an array, the
+first character is at index 1.
 
 
 ### Elementary mathematical operations and functions ###
