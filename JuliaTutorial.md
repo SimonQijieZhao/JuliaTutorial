@@ -16,6 +16,7 @@
   + [Comment code](#comment-code)
   + [Variables](#variables)
   + [Built-in numeric primitives](#built-in-numeric-primitives)
+  + [String](#string)
   + [Elementary mathematical operations and functions](#elementary-mathematical-operations-and-functions)
   + [Support for complex and rational numbers](#support-for-complex-and-rational-numbers)
   + [Control flow](#control-flow)
@@ -305,7 +306,11 @@ Int64       Uint64
 Int128      Uint128
 
 Bool  # false or true with 8 bits
-Char  # Unicode characters with 32 bits
+
+Char # Unicode characters with 32 bits, denoted by enclosing printable
+     # characters in single quotes, such as `'x'`, or escaped `\u` or
+     # `\U` hexadecimal input forms, such as `'\u78'`, which is the
+     # same as `'x'`.
 
 # There is no type named Double as in other programming languages
 Float16
@@ -325,11 +330,28 @@ A few useful functions that can work with these basic built-in types:
 
 And there are a same number of functions with the same names but in
 lower case for converting a value to corresponding numeric types.  For
-example, `uint64(x)` converts `x` to `Uint64` data type.
+example, `uint64(x)` converts `x` to `Uint64` data type, `char(120)`
+converts the integer value `120` to a `Char`, which turns out to be
+`'x'`.
 
 In addition, a set of special floating-point values is provided, such
 as `Inf`, `-Inf`, `NaN`.  More details can be found at
 [Julia Manual - Integers and Floating-Point Numbers](http://docs.julialang.org/en/latest/manual/integers-and-floating-point-numbers/)
+
+
+### String ###
+
+String literals are denoted by being enclosed in double quotes, or
+triple double quotes when a string contains double quotes and escape
+the quotes with "\" would be less readable:
+
+```Julia
+julia> a = "Hello";
+julia> b = """Escape the quotes with "\\" would be less readable""";
+julia> c = "Escape the quotes with \"\\\" would be less readable";
+julia> b == c
+true
+```
 
 
 ### Elementary mathematical operations and functions ###
