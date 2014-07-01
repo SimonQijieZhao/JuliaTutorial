@@ -364,7 +364,71 @@ true
 ```
 
 Indexing a specific character in a string is like in an array, the
-first character is at index 1.
+first character is also at index 1.
+
+```Julia
+julia> a = "Hello"
+"Hello"
+
+julia> a[1]
+'H'
+
+julia> a[1:3]
+"Hel"
+```
+
+However, when the characters in a string aren't in ASCII.  The default
+encoding of Julia --- UTF-8 --- allows those characters represented
+with multiple bytes, so that indexing a string may not get a valid
+character.
+
+```Julia
+julia> s = "\u2200x \u2203y"
+"∀x ∃y"
+
+julia> s[1]
+'∀'
+
+julia> s[2]
+ERROR: invalid UTF-8 character index
+ in getindex at utf8.jl:63
+
+julia> s[3]
+ERROR: invalid UTF-8 character index
+ in getindex at utf8.jl:63
+
+julia> s[4]
+'x'
+```
+
+And the common way to iterate through the characters in a string is:
+
+```Julia
+julia> for c in s
+         println(c)
+       end
+∀
+x
+
+∃
+y
+```
+
+Here are a few useful function related to strings (We can also find
+more by typing `apropos("string")` in REPL):
+
+|Function|Description|Example|
+|:-------|:----------|:------|
+|`length(s)`|The number of characters in string `s` (Note: )|`typeof(10.04)` returns `Float64`|
+|`sizeof(s)`|||
+|`nextind(s, i)`|||
+|`lowercase(s)`|||
+|`uppercase(s)`|||
+|`strip(s)`|||
+|`searchindex(s)`|||
+
+
+
 
 
 ### Elementary mathematical operations and functions ###
