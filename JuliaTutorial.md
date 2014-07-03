@@ -11,7 +11,7 @@
   + [Enter and quit Julia interactive session](#enter-and-quit-julia-interactive-session)
   + [Something special to the REPL](#something-special-to-the-repl)
   + [Get help in REPL](#get-help-in-repl)
-  + [Play with Julia script file](#play-with-julia-script-file)
+  + [Play with Julia script file and command line](#play-with-julia-script-file-and-command-line)
   + [Run shell command in Julia](#run-shell-command-in-julia)
   + [Comment code](#comment-code)
   + [Variables](#variables)
@@ -186,7 +186,7 @@ And the blog [Julia Helps](http://www.juliabloggers.com/julia-helps/)
 gives a good summary about getting help from Julia itself.
 
 
-### Play with Julia script file ###
+### Play with Julia script file and command line ###
 
 A Julia script file has **.jl** as its extension.
 
