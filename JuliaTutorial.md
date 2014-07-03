@@ -419,13 +419,20 @@ more by typing `apropos("string")` in REPL):
 
 |Function|Description|Example|
 |:-------|:----------|:------|
-|`length(s)`|The number of characters in string `s` (Note: )|`typeof(10.04)` returns `Float64`|
-|`sizeof(s)`|||
-|`nextind(s, i)`|||
-|`lowercase(s)`|||
-|`uppercase(s)`|||
-|`strip(s)`|||
-|`searchindex(s)`|||
+|`length(s)`|The number of characters in string `s`|`length("∀x ∃y")` returns `5`|
+|`sizeof(s)`|The number of bytes in string `s`|`sizeof("∀x ∃y")` returns `9`|
+|`nextind(s, i)`|The next valid string index after `i` of the string `s`|`nextind("∀x ∃y", 1)` returns `4` for the very index of character `x`|
+|`prevind(s, i)`|The previous valid string index before `i` of the string `s`|`prevind("∀x ∃y", 3)` returns `1`|
+|`lowercase(s)`|A string of lowercase of `s`|`lowercase("Hello")` returns `"hello"`|
+|`uppercase(s)`|A string of uppercase of `s`|`uppercase("Hello")` returns `"HELLO"`|
+|`strip(s)`|A string of `s` but with any leading and trailing whitespace removed|`strip("  Hello  ")` returns `"Hello"`|
+|`searchindex(s, sub)`|The start index at which the substring `sub` is found in `s`|`searchindex("Hello", "e")` returns `2`|
+|`beginswith(s, prefix)`|Whether string `s` begins with `prefix`|`beginswith("music001", "music")` returns `true`|
+|`join(s)`|Join an array of strings into a single string, inserting the given delimiter between adjacent strings|`join(["Hello", "world"], ", ")` returns `"Hello, world"`|
+|`match(s)`|||
+|`replace(s)`|||
+
+
 
 
 
