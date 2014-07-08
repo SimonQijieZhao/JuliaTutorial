@@ -18,6 +18,7 @@
   + [Built-in numeric primitives](#built-in-numeric-primitives)
   + [Array](#array)
   + [String](#string)
+  + [Regular Expressions](#regular-expressions)
   + [Elementary mathematical operations and functions](#elementary-mathematical-operations-and-functions)
   + [Support for complex and rational numbers](#support-for-complex-and-rational-numbers)
   + [Control flow](#control-flow)
@@ -352,8 +353,8 @@ be accessed by using index `end`.  Range indexing can be done by using
 ### String ###
 
 String literals are denoted by being enclosed in double quotes, or
-triple double quotes when a string contains double quotes and escape
-the quotes with "\" would be less readable:
+triple double quotes when a string contains double quotes, since
+escape the quotes with "\" would be less readable:
 
 ```Julia
 julia> a = "Hello";
@@ -362,6 +363,18 @@ julia> c = "Escape the quotes with \"\\\" would be less readable";
 julia> b == c
 true
 ```
+
+Strings can be constructed by function `string` or string
+interpolation with `$`:
+
+```Julia
+julia> "1 + 2 = $(1+2)"
+"1 + 2 = 3"
+julia> string("1 + 2 = ", 1+2)
+"1 + 2 = 3"
+```
+
+Here `$` can be followed by any expressions enclosed in parentheses.
 
 Indexing a specific character in a string is like in an array, the
 first character is also at index 1.
@@ -421,6 +434,8 @@ more by typing `apropos("string")` in REPL):
 |:-------|:----------|:------|
 |`length(s)`|The number of characters in string `s`|`length("∀x ∃y")` returns `5`|
 |`sizeof(s)`|The number of bytes in string `s`|`sizeof("∀x ∃y")` returns `9`|
+|`endof(s)`|The index of the last character of `s`|`endof("∀x ∃")` returns `6`|
+|`chr2ind(s, i)`|The index of the `i`-th character of `s`|`chr2ind("∀x ∃y", 4)` returns `6`|
 |`nextind(s, i)`|The next valid string index after `i` of the string `s`|`nextind("∀x ∃y", 1)` returns `4` for the very index of character `x`|
 |`prevind(s, i)`|The previous valid string index before `i` of the string `s`|`prevind("∀x ∃y", 3)` returns `1`|
 |`lowercase(s)`|A string of lowercase of `s`|`lowercase("Hello")` returns `"hello"`|
@@ -428,12 +443,43 @@ more by typing `apropos("string")` in REPL):
 |`strip(s)`|A string of `s` but with any leading and trailing whitespace removed|`strip("  Hello  ")` returns `"Hello"`|
 |`searchindex(s, sub)`|The start index at which the substring `sub` is found in `s`|`searchindex("Hello", "e")` returns `2`|
 |`beginswith(s, prefix)`|Whether string `s` begins with `prefix`|`beginswith("music001", "music")` returns `true`|
-|`join(s)`|Join an array of strings into a single string, inserting the given delimiter between adjacent strings|`join(["Hello", "world"], ", ")` returns `"Hello, world"`|
-|`match(s)`|||
+|`join(s, d)`|Join an array of strings `s` into a single string, inserting the given delimiter `d` between adjacent strings|`join(["Hello", "world"], ", ")` returns `"Hello, world"`|
+|`repeat(s, i)`|Construct a string of `i`-times repeated concatenation of `s` |`repeat("@#", 3)` returns `"@#@#@#"`|
 |`replace(s)`|||
 
 
+### Regular Expressions ###
 
+Julia's regular expression is Perl-compatible.  We can construct a
+pattern by prefixing a pattern string with `r`.  We will give a short
+example to explain its usage (which is from
+[Julia manual - Strings](http://docs.julialang.org/en/latest/manual/strings/#regular-expressions)):
+
+```Julia
+julia> m = match(r"(a|b)(c)?(d)", "ad")
+RegexMatch("ad", 1="a", 2=nothing, 3="d")
+
+julia> m.match
+"ad"
+
+julia> m.captures
+3-element Array{Union(Nothing,SubString{UTF8String}),1}:
+ "a"
+ nothing
+ "d"
+
+julia> m.offset
+1
+
+julia> m.offsets
+3-element Array{Int64,1}:
+ 1
+ 0
+ 2
+
+julia> first, second = m.captures; first
+"a"
+```
 
 
 
