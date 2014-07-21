@@ -819,17 +819,27 @@ operators are well demonstrated by the factorial routine in the
 ### The number of available packages ###
 
 Julia is still young.  The number of available packages is small
-compared to R.  However, they grow rapidly.  Until 2014-06-19, there
-are 279 packages available for Julia, and 5323 packages available for
-R.
+compared to R.  However, they grow rapidly.  Here we list the number
+of available packages in the table.  One may have different
+interpretations, but the purpose here is for studying the trend of
+these two counterparts only by tracking the number of packages newly
+comming out.
+
+
+| Date |Julia|  R  |
+|:----:|----:|----:|
+|2014-06-19|279|5323|
+|2014-07-21|377|5413|
+
 
 We can get the number of available packages of Julia and R,
 respectively by the following Linux shell scripts.
 
 ```Shell
 # Get the number of available packages of Julia
-curl -s https://raw.githubusercontent.com/JuliaLang/julia/master/doc/packages/packagelist.rst \
-| grep "Maintainer" | wc -l
+expr $(curl -s https://github.com/JuliaLang/METADATA.jl | grep \
+"js-directory-link" | wc -l) - 5
+
 ```
 
 ```Shell
@@ -838,6 +848,9 @@ expr $(curl -s http://cran.r-project.org/src/contrib/Archive/ | sed -n \
 '/Parent Directory/,$ p' | grep -c "</a>") - 1
 ```
 
+There is also a
+[Searchable listing of all registered packages for Julia](http://pkg.julialang.org/),
+where you can search for specific package of Julia.
 
 ## Useful resources ##
 
