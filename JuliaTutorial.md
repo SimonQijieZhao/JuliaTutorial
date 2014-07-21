@@ -349,6 +349,21 @@ be accessed by using index `end`.  Range indexing can be done by using
 `:`, such as `1:5` (range `[1, 2, 3, 4, 5]`) or `2:2:10` (range
 `[2, 4, 6, 8, 10]`)
 
+**Note** the difference between arrays constructed with and without
+comma:
+
+```Julia
+julia> x = [1, 2, 3]
+3-element Array{Int64,1}:
+ 1
+ 2
+ 3
+
+julia> x = [1 2 3]
+1x3 Array{Int64,2}:
+ 1  2  3
+```
+
 
 ### String ###
 
@@ -683,7 +698,7 @@ end
 This is because that in Julia, the value of the last evaluated
 expression in the body of a function will be considered as the return
 value of that function by default, unless some other value is
-explictly taken as return value by **return** somewhere before the
+explictly indicated as return value by **return** somewhere before the
 last expression.
 
 In Julia, function is treated the same as any other object.  That is,
@@ -739,8 +754,8 @@ or even:
 greaterThan = (x, y) -> x > y
 ```
 
-which is defined by assigning an anonymous function to the variable
-**greaterThan**.
+which is defined by assigning an **anonymous function** to the
+variable **greaterThan**.
 
 We can also pass an anonymous function to another function that take
 functions as its arguments, for example with the previous **apply**
@@ -778,6 +793,26 @@ third one and so on.
 
 
 #### Return multiple values ####
+
+In Julia, multiple values are returned by being wrapped in a tuple.
+However, a syntactic sugar is provided to allow tuples being created
+and destructured without needing parentheses:
+
+```Julia
+julia> foo(a, b) = (a+b, a*b);
+julia> foo(2, 3)
+(5,6)
+julia> foo(a, b) = a+b, a*b;
+julia> foo(2, 3)
+(5,6)
+julia> x, y = foo(2, 3)
+(5,6)
+julia> x
+5
+julia> y
+6
+```
+
 
 
 ### Operators ###
