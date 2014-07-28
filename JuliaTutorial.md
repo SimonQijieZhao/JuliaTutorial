@@ -27,6 +27,7 @@
   + [Compound expressions](#compound-expressions)
   + [Function](#function)
     - [Return multiple values](#return-multiple-values)
+	- [Special ellipsis "..." argument](#special-ellipsis-"..."-argument)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
 * [Write your own package](#write-your-own-package)
@@ -813,6 +814,45 @@ julia> y
 6
 ```
 
+#### Special ellipsis "..." argument ####
+
+Ellipsis "..." has special meaning when used with functions.
+
+1.  Iterable objects followed by an ellipsis "..." as an argument to a
+    function call.
+
+    ```Julia
+	julia> add(x, y) = x + y;
+    julia> a = (1, 2); b = [3, 4];
+	julia> add(a)
+	ERROR: no method add((Int64,Int64),)
+    julia> add(a...)
+    3
+    julia> add(b...)
+    7
+	```
+
+    Here the "..." in the function call tells Julia that the argument
+    "**a**" should be treated as a collection of arguments.  In other
+    words, each element in **a** should be considered as an individual
+    argument to the function **add**.
+
+2.  An argument followed by an ellipsis "..." as the last argument in
+    a function definition.
+
+    ```Julia
+	julia> bar(a,b,x...) = (a,b,x);
+    julia> bar(1,2)
+    (1,2,())
+    julia> bar(1,2,3)
+    (1,2,(3,))
+    julia> bar(1,2,3,4)
+    (1,2,(3,4))
+	```
+
+    In this case, the "..." tells Julia that the function **bar**
+    takes two or more arguments, the first as **a**, the second as
+    **b**, and the remains as **x** if any.
 
 
 ### Operators ###
