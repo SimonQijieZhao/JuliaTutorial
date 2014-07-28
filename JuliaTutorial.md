@@ -27,7 +27,7 @@
   + [Compound expressions](#compound-expressions)
   + [Function](#function)
     - [Return multiple values](#return-multiple-values)
-	- [Special ellipsis "..." argument](#special-ellipsis-"..."-argument)
+	- [Special ellipsis "..." argument](#special-ellipsis--argument)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
 * [Write your own package](#write-your-own-package)
