@@ -375,8 +375,11 @@ escape the quotes with "\" would be less readable:
 
 ```Julia
 julia> a = "Hello";
+
 julia> b = """Escape the quotes with "\\" would be less readable""";
+
 julia> c = "Escape the quotes with \"\\\" would be less readable";
+
 julia> b == c
 true
 ```
@@ -387,6 +390,7 @@ interpolation with `$`:
 ```Julia
 julia> "1 + 2 = $(1+2)"
 "1 + 2 = 3"
+
 julia> string("1 + 2 = ", 1+2)
 "1 + 2 = 3"
 ```
@@ -804,13 +808,17 @@ and destructured without needing parentheses:
 julia> foo(a, b) = (a+b, a*b);
 julia> foo(2, 3)
 (5,6)
+
 julia> foo(a, b) = a+b, a*b;
 julia> foo(2, 3)
 (5,6)
+
 julia> x, y = foo(2, 3)
 (5,6)
+
 julia> x
 5
+
 julia> y
 6
 ```
@@ -827,8 +835,10 @@ Ellipsis "..." has special meaning when used with functions.
     julia> a = (1, 2); b = [3, 4];
 	julia> add(a)
 	ERROR: no method add((Int64,Int64),)
+	
     julia> add(a...)
     3
+	
     julia> add(b...)
     7
 	```
@@ -845,8 +855,10 @@ Ellipsis "..." has special meaning when used with functions.
 	julia> bar(a,b,x...) = (a,b,x);
     julia> bar(1,2)
     (1,2,())
+	
     julia> bar(1,2,3)
     (1,2,(3,))
+	
     julia> bar(1,2,3,4)
     (1,2,(3,4))
 	```
@@ -859,7 +871,7 @@ Ellipsis "..." has special meaning when used with functions.
 #### Optional positional and keyword arguments ####
 
 **Optional** arguments are arguments with default values, so that
-functions have optional arguments can be invoked without given
+functions with optional arguments can be invoked without given
 explicit values for those optional arguments if the default values are
 appropriate enough.
 
@@ -870,24 +882,29 @@ order specified in the function definition.
 ```Julia
 julia> foo(x, y=1, z=1) = x + y + z
 foo (generic function with 3 methods)
+
 julia> methods(foo)
 # 3 methods for generic function "foo":
 foo(x) at none:1
 foo(x,y) at none:1
 foo(x,y,z) at none:1
+
 julia> foo(1)
 3
+
 julia> foo(1, 2)
 4
+
 julia> foo(1, 2, 3)
 6
+
 julia> foo(1, , 3)
 ERROR: syntax: unexpected ,
 ```
 
-The last results in the above tells if one specifies a value for a
-optional positional argument in a call, the values of all prior
-optinal positional arguments must also be explicitly specified.
+The last results above tells if one specifies a value for a optional
+positional argument in a call, the values of all prior optinal
+positional arguments must also be explicitly specified.
 
 Therefore, keyword arguments come to rescue.  **Keyword** arguments
 are optional arguments too.  Different from positional arguments,
@@ -902,12 +919,16 @@ function.
 julia> foo(x, y=1, z=2; u=3, v=4) = x  - (y + z) + u * v;
 julia> foo(1;)
 10
+
 julia> foo(1)
 10
+
 julia> foo(1, 2, 3; u=5, v=6)
 26
+
 julia> foo(1, 2, 3, u=5, v=6)
 26
+
 julia> foo(u=5, 1, v=6, 2, 3)
 26
 ```
@@ -916,28 +937,25 @@ The last results above tells keyword arguments can be mixed with other
 arguments in a call.
 
 Both optional positional and keyword arguments (which are collectively
-called optional arguments) should have default values.  subsequent
+called optional arguments) should have default values.  Subsequent
 optional arguments may refer to prior arguments in defining their
 default values.  And all non-optional arguments should be put before
 optional arguments in the function definition.
 
 ```Julia
-foo(x, y=1; width=1, length=1) =
-  println("A ", width, " * ", length, " rectangle at (", x, ", ", y, ")")
+julia> foo(x, y=1, z=2; u, v=4) = x  - (y + z) + u * v;
+ERROR: syntax: invalid keyword argument u
 
-foo(x, y; width, length=1) =
-  println("A ", width, " * ", length, " rectangle at (", x, ", ", y, ")")
+julia> foo(x, y=1, z=2; u=3, v=u+1) = x  - (y + z) + u * v;
+julia> foo(1)
+10
 
-foo(1, 2; length=3, width=4)
-foo(1, 2, length=3, width=4)
-foo(1, 2)
-foo(1, 2;)
--------------------------------------------
-foo(width, length=width*2) =
-  println("A ", width, " * ", length, " rectangle")
+julia> foo(x, y=1, z=2, u; v=4) = x  - (y + z) + u * v;
+ERROR: syntax: optional positional arguments must occur at end
 
-foo(;width=1, length=width*2) =
-  println("A ", width, " * ", length, " rectangle")
+julia> foo(x, u, y=1, z=2; v=4) = x  - (y + z) + u * v;
+julia> foo(1, 3)
+10
 ```
 
 
