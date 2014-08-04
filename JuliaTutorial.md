@@ -1,5 +1,10 @@
 # Julia Tutorial #
 
+Note that some terminologies may be slightly different from those from
+the [Julia Documentation](http://docs.julialang.org/en/latest/).  It
+depends on my understanding and my opinions about what is a better
+mnemonic.
+
 * [Introduction](#introduction)
 * [Installation](#installation)
   + [On Ubuntu](#on-ubuntu)
@@ -676,6 +681,12 @@ below are borrowed from
 	  x + y
 	)
     ```
+
+Note that when in multiple lines, ";" should be kept in "**(;)**"
+chains, while in "**begin...end**", it can be droped.  (? I am not
+sure whether there is other usage of "**(;)**", but here it seems
+there is no big difference between "**begin...end**" and "**(;)**",
+except that "**(;)**" saves typing.)
 
 
 ### Function ###
