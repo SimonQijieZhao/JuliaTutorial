@@ -639,6 +639,9 @@ for i = 1:3
 end
 ```
 
+However, a "**break**" will terminate the entire loop that use the
+concise nested form.
+
 ### Compound expressions ###
 
 In Julia, we can use "**begin...end**" or "**(;)**" chains to form a
@@ -974,13 +977,13 @@ julia> foo(1, 3)
 
 #### Special note for logical operators ####
 
-The last entry in a conditional chain formed by the logical operators
-**&&** and **||** can be a type of non-boolean expression, so that the
-value of the whole chain expression will be either a boolean value
-(**false** for **&&**, and **true** for **||**) or the value of the
-last entry, depending on whether the last entry got evaluated or not,
-which is determined by the short-circuit property of logical
-operators.  For example,
+The last entry (and only it) in a conditional chain formed by the
+logical operators **&&** and **||** can be a type of non-boolean
+expression, so that the value of the whole chain expression will be
+either a boolean value (**false** for **&&**, and **true** for **||**)
+or the value of the last entry, depending on whether the last entry
+got evaluated or not, which is determined by the short-circuit
+property of logical operators.  For example,
 
 ```Julia
 a = (false || (x = "Hello"))  # a will be "Hello"
