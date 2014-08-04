@@ -36,6 +36,8 @@ mnemonic.
 	- [Optional positional and keyword arguments](#optional-positional-and-keyword-arguments)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
+  + [Tasks](#tasks)
+  + [Exception handling](#exception-handling)
 * [Write your own package](#write-your-own-package)
 * [Some interesting facts](#some-interesting-facts)
   + [The number of available packages](#the-number-of-available-packages)
@@ -1001,6 +1003,9 @@ And I think no real code would be written this way.  It is only for
 illustration.  And the pratical usage of this behaviour of logical
 operators are well demonstrated by the factorial routine in the
 [Julia manual - Short-Circuit Evaluation](http://docs.julialang.org/en/latest/manual/control-flow/#short-circuit-evaluation)
+
+### Exception handling ###
+
 
 
 
