@@ -34,6 +34,8 @@ mnemonic.
     - [Return multiple values](#return-multiple-values)
 	- [Special ellipsis "..." argument](#special-ellipsis--argument)
 	- [Optional positional and keyword arguments](#optional-positional-and-keyword-arguments)
+  + [Variable scope](#variable-scope)
+    - [let...end](#let--end)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Tasks](#tasks)
@@ -972,6 +974,71 @@ ERROR: syntax: optional positional arguments must occur at end
 julia> foo(x, u, y=1, z=2; v=4) = x  - (y + z) + u * v;
 julia> foo(1, 3)
 10
+```
+
+### Variable scope ###
+
+In Julia, **for** loops, **try** and **catch** blocks, **function**
+bodies, all of these constructs will introduce a new scope for the
+variable used within them, where new local variables can be defined
+and visible, without worrying about naming conflicts of the same name
+variables inside and outside the scope.  However, attention should be
+paid to "**begin...end**" blocks, since they won't introduce any new
+scope:
+
+```Julia
+julia> for i = 1
+         local x = 1
+         for j = 1
+           local x = 2
+           println(x)
+         end
+       end
+2
+
+julia> begin
+         local x = 1
+         begin
+           local x = 2
+           println(x)
+         end
+       end
+ERROR: syntax: local x declared twice
+```
+
+#### **let...end** ####
+
+```Julia
+let var1 = value1, var2, var3 = value3
+  code
+end
+```
+
+```Julia
+julia> x = 1; y = 2;
+
+julia> let x = 2
+         y = 3x
+       end
+6
+
+julia> y
+6
+
+julia> x
+1
+
+julia> let
+         x = 2
+         y = 3x
+       end
+6
+
+julia> y
+6
+
+julia> x
+2
 ```
 
 
