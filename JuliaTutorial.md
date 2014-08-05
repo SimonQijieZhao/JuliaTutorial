@@ -35,7 +35,7 @@ mnemonic.
 	- [Special ellipsis "..." argument](#special-ellipsis--argument)
 	- [Optional positional and keyword arguments](#optional-positional-and-keyword-arguments)
   + [Variable scope](#variable-scope)
-    - [let...end](#let--end)
+    - [let...end](#letend)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Tasks](#tasks)
