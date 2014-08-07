@@ -150,7 +150,7 @@ or **Ctrl-d** to quit back to shell.
     in REPL, to get the value of the last evaluated expression, no
     matter if it is suppressed or not.
 
-4.  You can type "**julia -q**" to suppress the display of startup
+4.  You can type `julia -q` to suppress the display of startup
     banner (like below) when lauch the REPL.
 
     ```
@@ -218,17 +218,17 @@ A Julia script file has **.jl** as its extension.
     include("hello.jl")
     ```
 
-    "**Hello, world!**" will be printed out.
+    `Hello, world!` will be printed out.
 
 2.  To execute a Julia script in shell, for example, previous
-    "**hello.jl**", type:
+    **hello.jl**, type:
 
     ```Shell
     julia hello.jl
     ```
 
 3.  To execute a short code within shell command line, we could use
-    the option "**-e**" for command "**julia**":
+    the option `-e` for command `julia`:
 
     ```Shell
     julia -e 'println("Hello, world!")'
@@ -237,7 +237,7 @@ A Julia script file has **.jl** as its extension.
 4.  To execute a Julia script in shell with one or more command line
     arguments, Julia provides **ARGS** for holding the arguments
     passed from command line.  For example, we have a script named
-    "**hello2.jl**":
+    **hello2.jl**:
 
     ```Julia
 	# hello2.jl
@@ -250,7 +250,7 @@ A Julia script file has **.jl** as its extension.
     julia hello2.jl Simon
     ```
 
-    will output "**Hello, Simon!**".
+    will output `Hello, Simon!`.
 
 
 ### Run shell command in Julia ###
@@ -380,7 +380,7 @@ julia> x = [1 2 3]
 
 String literals are denoted by being enclosed in double quotes, or
 triple double quotes when a string contains double quotes, since
-escape the quotes with "\" would be less readable:
+escape the quotes with `\` would be less readable:
 
 ```Julia
 julia> a = "Hello";
@@ -643,27 +643,27 @@ for i = 1:3
 end
 ```
 
-However, a "**break**" will terminate the entire loop that use the
+However, a `break` will terminate the entire loop that use the
 concise nested form.
 
 ### Compound expressions ###
 
-In Julia, we can use "**begin...end**" or "**(;)**" chains to form a
-single compound expression out of several sub-expressions.  In other
-words, it can be considered as a small one-time-use function with the
-value of the last sub-expression as its return value.
+In Julia, we can use `begin...end` or `(;)` chains to form a single
+compound expression out of several sub-expressions.  In other words,
+it can be considered as a small one-time-use function with the value
+of the last sub-expression as its return value.
 
 The four ways we can write a compound expression are (The examples
 below are borrowed from
 [Julia manual - Compound Expressions](http://docs.julialang.org/en/latest/manual/control-flow/#compound-expressions).):
 
-1.  "**begin...end**" in a single line:
+1.  `begin...end` in a single line:
 
     ```Julia
     z = begin x = 1; y = 2; x + y end
     ```
 
-2.  "**begin...end**" cross multiple lines:
+2.  `begin...end` cross multiple lines:
 
     ```Julia
 	z = begin
@@ -673,13 +673,13 @@ below are borrowed from
 	end
     ```
 
-3.  "**(;)**" in a single line:
+3.  `(;)` in a single line:
 
     ```Julia
 	z = (x = 1; y = 2; x + y)
     ```
 
-4.  "**(;)**" cross multiple lines:
+4.  `(;)` cross multiple lines:
 
     ```Julia
 	z = (
@@ -689,11 +689,11 @@ below are borrowed from
 	)
     ```
 
-Note that when in multiple lines, ";" should be kept in "**(;)**"
-chains, while in "**begin...end**", it can be droped.  (? I am not
-sure whether there is other usage of "**(;)**", but here it seems
-there is no big difference between "**begin...end**" and "**(;)**",
-except that "**(;)**" saves typing.)
+Note that when in multiple lines, "`;`" should be kept in `(;)`
+chains, while in `begin...end`, it can be droped.  (? I am not
+sure whether there is other usage of `(;)`, but here it seems
+there is no big difference between `begin...end` and `(;)`,
+except that `(;)` saves typing.)
 
 
 ### Function ###
@@ -843,9 +843,9 @@ julia> y
 
 #### Special ellipsis "..." argument ####
 
-Ellipsis "..." has special meaning when used with functions.
+Ellipsis "`...`" has special meaning when used with functions.
 
-1.  Iterable objects followed by an ellipsis "..." as an argument to a
+1.  Iterable objects followed by an ellipsis "`...`" as an argument to a
     function call.
 
     ```Julia
@@ -861,12 +861,12 @@ Ellipsis "..." has special meaning when used with functions.
     7
 	```
 
-    Here the "..." in the function call tells Julia that the argument
-    "**a**" should be treated as a collection of arguments.  In other
-    words, each element in **a** should be considered as an individual
-    argument to the function **add**.
+    Here the "`...`" in the function call tells Julia that the
+    argument `a` should be treated as a collection of arguments.  In
+    other words, each element in **a** should be considered as an
+    individual argument to the function **add**.
 
-2.  An argument followed by an ellipsis "..." as the last argument in
+2.  An argument followed by an ellipsis "`...`" as the last argument in
     a function definition.
 
     ```Julia
@@ -881,7 +881,7 @@ Ellipsis "..." has special meaning when used with functions.
     (1,2,(3,4))
 	```
 
-    In this case, the "..." tells Julia that the function **bar**
+    In this case, the "`...`" tells Julia that the function **bar**
     takes two or more arguments, the first as **a**, the second as
     **b**, and the remains as **x** if any.
 
@@ -983,7 +983,7 @@ bodies, all of these constructs will introduce a new scope for the
 variable used within them, where new local variables can be defined
 and visible, without worrying about naming conflicts of the same name
 variables inside and outside the scope.  However, attention should be
-paid to "**begin...end**" blocks, since they won't introduce any new
+paid to `begin...end` blocks, since they won't introduce any new
 scope:
 
 ```Julia
@@ -1011,10 +1011,9 @@ ERROR: syntax: local x declared twice
 
 #### **let...end** ####
 
-"**let...end**" is often used for introducing a new scope for local
-variables without extra side effects like "**for...end**" where the
-code within it may loop multiple times.  The template for
-"**let...end**" is:
+`let...end` is often used for introducing a new scope for local
+variables without extra side effects like `for...end` where the code
+within it may loop multiple times.  The template for `let...end` is:
 
 ```Julia
 let var1 = value1, var2, var3 = value3
@@ -1023,7 +1022,7 @@ end
 ```
 
 where the first line is used for defining local variables that can be
-referred to within the "code" part.
+referred to within the "`code`" part.
 
 ```Julia
 julia> x = 1; y = 2;
@@ -1049,8 +1048,8 @@ julia> y
 6
 ```
 
-Note that in the first line of the last "**let...end**", the first `x`
-is the new defined variable within "**let...end**", while the second
+Note that in the first line of the last `let...end`, the first `x`
+is the new defined variable within `let...end`, while the second
 `x` is the one defined previously.
 
 One can also leave the first line blank.
