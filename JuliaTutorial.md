@@ -1011,11 +1011,19 @@ ERROR: syntax: local x declared twice
 
 #### **let...end** ####
 
+"**let...end**" is often used for introducing a new scope for local
+variables without extra side effects like "**for...end**" where the
+code within it may loop multiple times.  The template for
+"**let...end**" is:
+
 ```Julia
 let var1 = value1, var2, var3 = value3
   code
 end
 ```
+
+where the first line is used for defining local variables that can be
+referred to within the "code" part.
 
 ```Julia
 julia> x = 1; y = 2;
@@ -1031,6 +1039,23 @@ julia> y
 julia> x
 1
 
+julia> let x = x, y, z = 2
+         y = x + z
+         println(y)
+       end
+3
+
+julia> y
+6
+```
+
+Note that in the first line of the last "**let...end**", the first `x`
+is the new defined variable within "**let...end**", while the second
+`x` is the one defined previously.
+
+One can also leave the first line blank.
+
+```Julia
 julia> let
          x = 2
          y = 3x
