@@ -143,10 +143,10 @@ or **Ctrl-d** to quit back to shell.
 1.  Once you have typed a complete expression, pressing **Enter** will
     get the expression be evaluated and the value will be printed out.
 
-2.  A trailing semicolon **;** will suppress the output for the
+2.  A trailing semicolon `;` will suppress the output for the
     evaluated value.
 
-3.  However, you can use the variable **ans**, which is only available
+3.  However, you can use the variable `ans`, which is only available
     in REPL, to get the value of the last evaluated expression, no
     matter if it is suppressed or not.
 
@@ -169,21 +169,21 @@ or **Ctrl-d** to quit back to shell.
 
 ### Get help in REPL ###
 
-With the **help()** function, one can query the documentation for a
+With the `help()` function, one can query the documentation for a
 specific function, macro, or variable.  For example,
 
 ```Julia
 help(println)
 ```
 
-Alternatively, we can use **?** as a short hand for the **help()**
+Alternatively, we can use `?` as a short hand for the `help()`
 function:
 
 ```Julia
 ?println
 ```
 
-If you are not sure how to use **help()**, just type:
+If you are not sure how to use `help()`, just type:
 
 ```Julia
 ?help
@@ -191,7 +191,7 @@ If you are not sure how to use **help()**, just type:
 
 for more details.
 
-**apropos()** is a more flexible function that can be used to search
+`apropos()` is a more flexible function that can be used to search
 documentation for functions related to a specific string.
 
 And the blog [Julia Helps](http://www.juliabloggers.com/julia-helps/)
@@ -203,7 +203,7 @@ gives a good summary about getting help from Julia itself.
 A Julia script file has **.jl** as its extension.
 
 1.  To execute the code in a Julia script file within a Julia
-    interactive session, we use function **include()**.  For example,
+    interactive session, we use function `include()`.  For example,
     if we have a script named **hello.jl** with the following
     contents:
 
@@ -235,7 +235,7 @@ A Julia script file has **.jl** as its extension.
     ```
 
 4.  To execute a Julia script in shell with one or more command line
-    arguments, Julia provides **ARGS** for holding the arguments
+    arguments, Julia provides `ARGS` for holding the arguments
     passed from command line.  For example, we have a script named
     **hello2.jl**:
 
@@ -256,14 +256,14 @@ A Julia script file has **.jl** as its extension.
 ### Run shell command in Julia ###
 
 A shell command should be wrapped in backticks "**`**", and we can use
-function **run()** to run the command within them.  For example,
+function `run()` to run the command within them.  For example,
 
 ```Julia
 run(`echo Hello`)
 ```
 
 However, the output will automatically be dumped to the screen.  We
-can assign the output to a variable by function **readall()**:
+can assign the output to a variable by function `readall()`:
 
 ```Julia
 a = readall(`echo Hello`)
@@ -272,10 +272,10 @@ a = readall(`echo Hello`)
 
 ### Comment code ###
 
-1.  In a single Julia script line, everything behind a **#** is
+1.  In a single Julia script line, everything behind a `#` is
     considered as comment.
 
-2.  **#=** and **=#** are used for multi-line comments.
+2.  `#=` and `=#` are used for multi-line comments.
 
 
 ### Variables ###
@@ -575,7 +575,7 @@ rational numbers.
 
 #### if-elseif-else-end ####
 
-Conditional evaluation can be obtained by the **if-elseif-else-end**
+Conditional evaluation can be obtained by the `if-elseif-else-end`
 construct.  For example,
 
 ```Julia
@@ -589,14 +589,14 @@ else
 end
 ```
 
-Note that **elseif** and **else** are optional, and the conditions
+Note that `elseif` and `else` are optional, and the conditions
 must be expressions that can be evaluated to be boolean values such as
-**true** and **false**.
+`true` and `false`.
 
 
 #### while and for loops ####
 
-**while...end** loops are like:
+`while...end` loops are like:
 
 ```Julia
 i = 1
@@ -606,7 +606,7 @@ while i <= 5
 end
 ```
 
-And the **for...end** loop do the same thing is like:
+And the `for...end` loop do the same thing is like:
 
 ```Julia
 for i = 1:5
@@ -622,10 +622,10 @@ for i in 1:5
 end
 ```
 
-**break** and **continue** are also the same in Julia as the other
+`break` and `continue` are also the same in Julia as the other
 programming languages such as C.
 
-The special usage of **for** loops below:
+The special usage of `for` loops below:
 
 ```Julia
 for i = 1:3, j in 1:5
@@ -701,7 +701,7 @@ except that `(;)` saves typing.)
 - [ ] maybe need to be more concise like
   [Compound expressions](#compound-expressions)
 
-Functions are defined with **function...end**:
+Functions are defined with `function...end`:
 
 ```Julia
 function greaterThan(x, y)
@@ -710,7 +710,7 @@ end
 ```
 
 Here we define a function which we can refer it by the name
-**greaterThan**.  And the **return** in the function is optional,
+`greaterThan`.  And the `return` in the function is optional,
 which means it can be written as:
 
 ```Julia
@@ -722,7 +722,7 @@ end
 This is because that in Julia, the value of the last evaluated
 expression in the body of a function will be considered as the return
 value of that function by default, unless some other value is
-explictly indicated as return value by **return** somewhere before the
+explictly indicated as return value by `return` somewhere before the
 last expression.
 
 In Julia, function is treated the same as any other object.  That is,
@@ -732,7 +732,7 @@ the parenthesis form.  All we need is something we can refer to it,
 such as a name.
 
 We can call a function with its name followed by the actual arugment
-enclosed in parentheses, or by the **apply** function:
+enclosed in parentheses, or by the `apply` function:
 
 ```Julia
 a = 1
@@ -756,7 +756,7 @@ else
 end
 ```
 
-The **apply** function takes another function as its first argument,
+The `apply` function takes another function as its first argument,
 and then apply that function to the remain arguments of itself.
 
 If the body of a function consists of only one single expression, the
@@ -779,10 +779,10 @@ greaterThan = (x, y) -> x > y
 ```
 
 which is defined by assigning an **anonymous function** to the
-variable **greaterThan**.
+variable `greaterThan`.
 
 We can also pass an anonymous function to another function that take
-functions as its arguments, for example with the previous **apply**
+functions as its arguments, for example with the previous `apply`
 function:
 
 ```Julia
@@ -809,10 +809,10 @@ apply(1, 2) do x, y
 end
 ```
 
-The **do...end** is another syntactic sugar that creates an anonymous
-function with arguments afterwards (here are **x** and **y**), to be
+The `do...end` is another syntactic sugar that creates an anonymous
+function with arguments afterwards (here are `x` and `y`), to be
 passed as the first argument to the function before it (here is the
-**apply** function), where the rest arguments will be the second, the
+`apply` function), where the rest arguments will be the second, the
 third one and so on.
 
 
@@ -863,8 +863,8 @@ Ellipsis "`...`" has special meaning when used with functions.
 
     Here the "`...`" in the function call tells Julia that the
     argument `a` should be treated as a collection of arguments.  In
-    other words, each element in **a** should be considered as an
-    individual argument to the function **add**.
+    other words, each element in `a` should be considered as an
+    individual argument to the function `add`.
 
 2.  An argument followed by an ellipsis "`...`" as the last argument in
     a function definition.
@@ -881,9 +881,9 @@ Ellipsis "`...`" has special meaning when used with functions.
     (1,2,(3,4))
 	```
 
-    In this case, the "`...`" tells Julia that the function **bar**
-    takes two or more arguments, the first as **a**, the second as
-    **b**, and the remains as **x** if any.
+    In this case, the "`...`" tells Julia that the function `bar`
+    takes two or more arguments, the first as `a`, the second as
+    `b`, and the remains as `x` if any.
 
 
 #### Optional positional and keyword arguments ####
@@ -978,7 +978,7 @@ julia> foo(1, 3)
 
 ### Variable scope ###
 
-In Julia, **for** loops, **try** and **catch** blocks, **function**
+In Julia, `for` loops, `try` and `catch` blocks, `function`
 bodies, all of these constructs will introduce a new scope for the
 variable used within them, where new local variables can be defined
 and visible, without worrying about naming conflicts of the same name
@@ -1074,9 +1074,9 @@ julia> x
 #### Special note for logical operators ####
 
 The last entry (and only it) in a conditional chain formed by the
-logical operators **&&** and **||** can be a type of non-boolean
+logical operators `&&` and `||` can be a type of non-boolean
 expression, so that the value of the whole chain expression will be
-either a boolean value (**false** for **&&**, and **true** for **||**)
+either a boolean value (`false` for `&&`, and `true` for `||`)
 or the value of the last entry, depending on whether the last entry
 got evaluated or not, which is determined by the short-circuit
 property of logical operators.  For example,
@@ -1086,7 +1086,7 @@ a = (false || (x = "Hello"))  # a will be "Hello"
 a = (true || (x = "Hello"))   # a will be true
 ```
 
-which can be re-written with one-line **if** statements as:
+which can be re-written with one-line `if` statements as:
 
 ```Julia
 a = (if !false x = "Hello" end)
