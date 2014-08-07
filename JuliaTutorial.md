@@ -993,8 +993,10 @@ julia> for i = 1
            local x = 2
            println(x)
          end
+		 println(x)
        end
 2
+1
 
 julia> begin
          local x = 1
@@ -1002,6 +1004,7 @@ julia> begin
            local x = 2
            println(x)
          end
+		 println(x)
        end
 ERROR: syntax: local x declared twice
 ```
