@@ -39,6 +39,7 @@ mnemonic.
 	- [Special note](#special-note)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
+  + [Types](#types)
   + [Tasks](#tasks)
   + [Exception handling](#exception-handling)
 * [Write your own package](#write-your-own-package)
@@ -1103,7 +1104,7 @@ julia> Fs[2]()
 2
 ```
 
-the result is the same as `while` loop:
+the effect is the same as `while` loop:
 
 ```Julia
 Fs = cell(2)
@@ -1168,6 +1169,21 @@ And I think no real code would be written this way.  It is only for
 illustration.  And the pratical usage of this behaviour of logical
 operators are well demonstrated by the factorial routine in the
 [Julia manual - Short-Circuit Evaluation](http://docs.julialang.org/en/latest/manual/control-flow/#short-circuit-evaluation)
+
+### Types ###
+
+Type annotation cannot be used in global scope, such as the REPL.
+
+```Julia
+julia> x::Int8
+ERROR: x not defined
+
+julia> x::Int8 = 10
+ERROR: x not defined
+```
+
+
+### Tasks ###
 
 ### Exception handling ###
 
