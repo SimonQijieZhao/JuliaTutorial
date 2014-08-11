@@ -36,6 +36,7 @@ mnemonic.
 	- [Optional positional and keyword arguments](#optional-positional-and-keyword-arguments)
   + [Variable scope](#variable-scope)
     - [let...end](#letend)
+	- [Special note](#special-note)
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Tasks](#tasks)
@@ -1065,6 +1066,75 @@ julia> y
 6
 
 julia> x
+2
+```
+
+#### Special note ####
+
+An easily misleading thing I found in the
+[Julia Manual about Scope of Variables](http://docs.julialang.org/en/latest/manual/variables-and-scoping/#for-loops-and-comprehensions) is:
+
+```Julia
+Fs = cell(2)
+for i = 1:2
+    Fs[i] = ()->i
+	end
+
+julia> Fs[1]()
+1
+
+julia> Fs[2]()
+2
+```
+
+Actually, when there already exists the varialbe `i` before `for` loop:
+
+```Julia julia> i = 1;
+
+julia> for i = 1:2
+         Fs[i] = () -> i
+	   end
+
+julia> Fs[1]()
+2
+
+julia> Fs[2]()
+2
+```
+
+the result is the same as `while` loop:
+
+```Julia
+Fs = cell(2)
+i = 1
+while i <= 2
+  Fs[i] = ()->i
+    i += 1
+	end
+
+julia> Fs[1]()
+3
+
+julia> Fs[2]()
+3
+```
+
+unless one introduces a new scope by `let...end`:
+
+```Julia
+Fs = cell(2)
+i = 1
+while i <= 2
+  let i = i
+      Fs[i] = ()->i
+	    end
+		  i += 1
+		  end
+
+julia> Fs[1]()
+1
+
+julia> Fs[2]()
 2
 ```
 
