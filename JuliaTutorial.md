@@ -1089,7 +1089,8 @@ julia> Fs[2]()
 
 Actually, when there already exists the varialbe `i` before `for` loop:
 
-```Julia julia> i = 1;
+```Julia
+julia> i = 1;
 
 julia> for i = 1:2
          Fs[i] = () -> i
