@@ -1172,6 +1172,33 @@ operators are well demonstrated by the factorial routine in the
 
 ### Types ###
 
+Though Julia is dynamic programming language, it doesn't mean type is
+not important.  It is just the so powerful type system in Julia that
+make it expressive, clear and intuitive.
+
+**Abstract types** are the backbone of Julia type system and form the
+conceptual hierachy of it.  They make a piece of code can be applied
+to a range of types not just a specific **concrete type**.  In the
+whole type hierarchy of Julia, there are two predefined abstract types
+`Any` and `None`, which are at the top and the bottom respectively.
+In other words, all objects are instances of `Any`, and `Any` is also
+the supertype of all types.  On the opposite, no object is an instance
+of `None`, and `None` is the subtype of all types.
+
+An abstract type can be defined by `abstract`:
+
+```Julia
+abstract Number
+```
+
+A hierarchical relationship between two abstract types can be defined by `<:`:
+
+```Julia
+abstract Real <: Number
+```
+
+
+
 Type annotation cannot be used in global scope, such as the REPL.
 
 ```Julia
