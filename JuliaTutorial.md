@@ -40,6 +40,11 @@ mnemonic.
   + [Operators](#operators)
 	- [Special note for logical operators](#special-note-for-logical-operators)
   + [Types](#types)
+    - [Type declaration](#type-declaration)
+    - [Abstract types](#abstract-types)
+	  * [Type unions](#type-unions)
+	- [Concrete types](#concrete-types)
+	  * [Composite types](#composite-types)
   + [Tasks](#tasks)
   + [Exception handling](#exception-handling)
 * [Write your own package](#write-your-own-package)
@@ -820,9 +825,11 @@ third one and so on.
 
 #### Return multiple values ####
 
-In Julia, multiple values are returned by being wrapped in a tuple.
-However, a syntactic sugar is provided to allow tuples being created
-and destructured without needing parentheses:
+In Julia, multiple values are returned by being wrapped in a tuple (A
+tuple is an ordered list of values grouped by parentheses with each
+value seperated from eath other by comma, ).  However, a syntactic
+sugar is provided to allow tuples being created and destructured
+without needing parentheses:
 
 ```Julia
 julia> foo(a, b) = (a+b, a*b);
@@ -1176,6 +1183,45 @@ Though Julia is dynamic programming language, it doesn't mean type is
 not important.  It is just the so powerful type system in Julia that
 make it expressive, clear and intuitive.
 
+#### Type declaration ####
+
+Usually, one doesn't need to specify a type for a value in Julia.
+However, there is some time that it is clearer and more useful to
+explicitly declare (or annotate) a type for a value.  **Type
+declaration** (or **annotation**) is done by following an expression
+or a variable the operator `::` and the desired type:
+
+```Julia
+julia> (1+1)::Int
+2
+
+julia> (1.0 + 1.0)::Int
+ERROR: type: typeassert: expected Int64, got Float64
+
+julia> add(x::Int, y::Int) = x + y
+add (generic function with 1 method)
+
+julia> add(1, 2)
+3
+
+julia> add(1.0, 2.0)
+ERROR: no method add(Float64,Float64)
+```
+
+Note that type annotation cannot be used in global scope, such as the
+REPL.
+
+```Julia
+julia> x::Int8
+ERROR: x not defined
+
+julia> x::Int8 = 10
+ERROR: x not defined
+```
+
+
+#### Abstract types ####
+
 **Abstract types** are the backbone of Julia type system and form the
 conceptual hierachy of it.  They make a piece of code can be applied
 to a range of types not just a specific **concrete type**.  In the
@@ -1191,23 +1237,106 @@ An abstract type can be defined by `abstract`:
 abstract Number
 ```
 
-A hierarchical relationship between two abstract types can be defined by `<:`:
+A hierarchical relationship between two abstract types is defined by
+`<:`:
 
 ```Julia
 abstract Real <: Number
 ```
 
-
-
-Type annotation cannot be used in global scope, such as the REPL.
+`<:` can also be used as an operator (or a function) to find out
+whether one type is a subtype of the other type:
 
 ```Julia
-julia> x::Int8
-ERROR: x not defined
-
-julia> x::Int8 = 10
-ERROR: x not defined
+julia> Int <: Number
+true
 ```
+
+##### Type unions #####
+
+A type unios is a special abstract type, much like `union` in C, that
+can be constructed by the `Union` function:
+
+```Julia
+julia> IntOrString = Union(Int,String)
+Union(String,Int64)
+
+julia> 1 :: IntOrString
+1
+
+julia> "Hello!" :: IntOrString
+"Hello!"
+
+julia> 1.0 :: IntOrString
+ERROR: type: typeassert: expected Union(String,Int64), got Float64
+```
+
+
+#### Concrete types ####
+
+Unlike **abstract types**, **concrete types** are used to refer to
+specific types that can have instances.
+
+##### Composite types #####
+
+Most commonly-used user-defined concrete types are **composite
+types**.  Concrete typs is a collection of name fields, more like
+`struct` in C, but less like `class` in C++.  They are defined by
+`type...end` with field names and optionally annotated types:
+
+```Julia
+julia> type Foo
+         bar
+         baz::Int
+         qux::Float64
+       end
+```
+
+Instances of type `Foo` are created by applying the `Foo` type object
+like a function to values of compatible types with the fields:
+
+```Julia
+julia> foo = Foo("Hello, world.", 23, 1.5)
+Foo("Hello, world.",23,1.5)
+
+julia> foo = Foo("Hello, world.", 23.0, 1.5)
+ERROR: no method Foo(ASCIIString,Float64,Float64)
+```
+
+The list of field names of a composite type can be obtained by the
+`names` function:
+
+```Julia
+julia> names(Foo)
+3-element Array{Any,1}:
+ :bar
+ :baz
+ :qux
+
+julia> names(foo)
+3-element Array{Any,1}:
+ :bar
+ :baz
+ :qux
+```
+
+The value of a specific field can be accessed by following an instance
+with a `.` and the field name:
+
+```Julia
+julia> foo = Foo("Hello, world.", 23, 1.5)
+Foo("Hello, world.",23,1.5)
+
+julia> foo.bar
+"Hello, world."
+
+julia> foo.bar = 1
+1
+
+julia> foo.bar
+1
+```
+
 
 
 ### Tasks ###
