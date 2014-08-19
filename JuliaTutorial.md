@@ -45,6 +45,7 @@ mnemonic.
 	  * [Type unions](#type-unions)
 	- [Concrete types](#concrete-types)
 	  * [Composite types](#composite-types)
+	- [Parametric types](#parametric-types)
   + [Tasks](#tasks)
   + [Exception handling](#exception-handling)
 * [Write your own package](#write-your-own-package)
@@ -1335,6 +1336,49 @@ julia> foo.bar = 1
 
 julia> foo.bar
 1
+```
+
+#### Parametric types ####
+
+**Parametric types** are types that parameterized in terms of other
+types.  In other words, a parametric type is a collection of types
+where each specific concrete type is derived from other corresponding
+specific types in replace of type paramenters (such as the `T` in
+curly braces below of `Point`) of that parametric type, much like a
+function, however, it is types here being the substitutes, not values.
+Therefore, a parametric type is also an abstract type.  One can define
+a parametric type by following the type name with a
+curly-braces-surrounded list of type paramenters:
+
+```Julia
+julia> type Point{T}
+         x::T
+         y::T
+       end
+
+julia> abstract Pointy{T}
+
+julia> Point{Int} <: Point
+true
+
+julia> Pointy{Int} <: Pointy
+true
+
+julia> Point{Int} <: Point{Number}
+false
+
+julia> Pointy{Int} <: Pointy{Number}
+false
+```
+
+Since a parametric type is an abstract type, instances can only be
+created for a specific concrete type derived from that parametric
+type.  Except that we need to specify concrete types for the type
+paramenters, all are the same as other non-parametric types:
+
+```Julia
+julia> Point{Float64}(1.0,2.0)
+Point{Float64}(1.0,2.0)
 ```
 
 
