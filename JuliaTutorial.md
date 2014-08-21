@@ -1245,6 +1245,9 @@ A hierarchical relationship between two abstract types is defined by
 abstract Real <: Number
 ```
 
+where `Real` is below `Number` in the type hierarchy, in other words,
+`Real` is a subtype of `Number` and `Number` is a supertype of `Real`.
+
 `<:` can also be used as an operator (or a function) to find out
 whether one type is a subtype of the other type:
 
@@ -1379,6 +1382,13 @@ paramenters, all are the same as other non-parametric types:
 ```Julia
 julia> Point{Float64}(1.0,2.0)
 Point{Float64}(1.0,2.0)
+```
+
+Just as a plain type can have a supertype, so the type parameter can
+also have a supertype serves as a range constraint:
+
+```Julia
+julia> abstract Pointy{T <: Real}
 ```
 
 
