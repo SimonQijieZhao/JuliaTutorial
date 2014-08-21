@@ -1409,6 +1409,7 @@ comming out.
 |:----:|----:|----:|
 |2014-06-19|279|5323|
 |2014-07-21|377|5413|
+|2014-08-21|401|5516|
 
 
 We can get the number of available packages of Julia and R,
