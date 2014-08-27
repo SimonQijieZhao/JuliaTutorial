@@ -46,6 +46,7 @@ mnemonic.
 	- [Concrete types](#concrete-types)
 	  * [Composite types](#composite-types)
 	- [Parametric types](#parametric-types)
+	- [Type Aliases](#type-aliases)
   + [Tasks](#tasks)
   + [Exception handling](#exception-handling)
 * [Write your own package](#write-your-own-package)
@@ -1349,8 +1350,9 @@ where each specific concrete type is derived from other corresponding
 specific types in replace of type paramenters (such as the `T` in
 curly braces below of `Point`) of that parametric type, much like a
 function, however, it is types here being the substitutes, not values.
-Therefore, a parametric type is also an abstract type.  One can define
-a parametric type by following the type name with a
+Therefore, a parametric type is also an abstract type.
+
+One can define a parametric type by following the type name with a
 curly-braces-surrounded list of type paramenters:
 
 ```Julia
@@ -1360,6 +1362,11 @@ julia> type Point{T}
        end
 
 julia> abstract Pointy{T}
+
+julia> type Pointz{A,B}
+         x::A
+         y::B
+       end
 
 julia> Point{Int} <: Point
 true
@@ -1382,6 +1389,9 @@ paramenters, all are the same as other non-parametric types:
 ```Julia
 julia> Point{Float64}(1.0,2.0)
 Point{Float64}(1.0,2.0)
+
+julia> Pointz(1, "a")
+Pointz{Int64,ASCIIString}(1,"a")
 ```
 
 Just as a plain type can have a supertype, so the type parameter can
@@ -1389,6 +1399,25 @@ also have a supertype serves as a range constraint:
 
 ```Julia
 julia> abstract Pointy{T <: Real}
+
+julia> Pointy{Int64}
+Pointy{Int64}
+
+julia> Pointy{String}
+ERROR: type: Pointy: in T, expected Real, got Type{String}
+```
+
+#### Type Aliases ####
+
+Like `typedef` in C, `typealias` is used to give a new name for an
+type.
+
+```Julia
+julia> typealias IntPt Point{Int64}
+Point{Int64} (constructor with 1 method)
+
+julia> IntPt(1, 2)
+Point{Int64}(1,2)
 ```
 
 
