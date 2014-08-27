@@ -46,7 +46,8 @@ mnemonic.
 	- [Concrete types](#concrete-types)
 	  * [Composite types](#composite-types)
 	- [Parametric types](#parametric-types)
-	- [Type Aliases](#type-aliases)
+	- [Type aliases](#type-aliases)
+	- [Useful functions related to types](#useful-functions-related-to-types)
   + [Tasks](#tasks)
   + [Exception handling](#exception-handling)
 * [Write your own package](#write-your-own-package)
@@ -1407,7 +1408,7 @@ julia> Pointy{String}
 ERROR: type: Pointy: in T, expected Real, got Type{String}
 ```
 
-#### Type Aliases ####
+#### Type aliases ####
 
 Like `typedef` in C, `typealias` is used to give a new name for an
 type.
@@ -1419,6 +1420,16 @@ Point{Int64} (constructor with 1 method)
 julia> IntPt(1, 2)
 Point{Int64}(1,2)
 ```
+
+#### Useful functions related to types ####
+
+|Function|Description|Example|
+|:-------|:----------|:------|
+|`<:`|||
+|`isa(x)`|||
+|`typeof(x)`|||
+|`super`|||
+
 
 
 
