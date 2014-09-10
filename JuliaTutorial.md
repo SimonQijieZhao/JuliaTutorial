@@ -47,7 +47,9 @@ mnemonic.
 	  * [Composite types](#composite-types)
 	- [Parametric types](#parametric-types)
 	- [Type aliases](#type-aliases)
-	- [Useful functions related to types](#useful-functions-related-to-types)
+	- [Useful functions operate on types](#useful-functions-operate-on-types)
+  + [Methods](#methods)
+    - [Useful functions operate on methods](#useful-functions-operate-on-methods)
   + [Tasks](#tasks)
   + [Exception handling](#exception-handling)
 * [Write your own package](#write-your-own-package)
@@ -1425,10 +1427,53 @@ Point{Int64}(1,2)
 
 |Function|Description|Example|
 |:-------|:----------|:------|
-|`<:`|||
-|`isa(x)`|||
-|`typeof(x)`|||
-|`super`|||
+|`T1 <: T2`|Subtype operator, determine whether `T1` is a subtype of `T2`.|`Int64 <: Number` returns `true`|
+|`isa(x, type)`|Determine whether `x` is of the given `type`.|`isa(1, Float64)` returns `false`|
+|`typeof(x)`|Get the concrete type of `x`.|`typeof(1)` returns `Int64` (in 64-bit system)|
+|`super(type)`|Return the supertype of DataType `type`|`super(Int64)`, `super(Signed)`, `super(Integer)`, `super(Real)` return `Signed`, `Integer`, `Real`, `Number`, respectively |
+
+
+### Methods ###
+
+In Julia, a function can have different behaviors for different
+combinations of argument types and numbers.  Such definition of one
+possible behavior for a fucntion is called a **method**, and it is
+just a new definition of the same function but with different
+arguments.  Such mechanism of choosing which method to execute when a
+function is applied in Julia is known as **multiple dispatch**.
+
+A new method for a specific function can be introduced anywhere at
+anytime, as long as it has the same name and different argument types
+or numbers.  Argument types can be specified by `::` operator (see
+also [Type declaration](#type-declaration)), thus, the method can only
+be applied to arguments of the specific types:
+
+```Julia
+julia> f(x::Int64, y::Int64) = x + y
+f (generic function with 1 method)
+
+julia> f(3, 4)
+7
+
+julia> f(3.3, 4.4)
+ERROR: no method f(Float64,Float64)
+
+julia> f(x::Float64, y::Float64) = round(x + y)
+f (generic function with 2 methods)
+
+julia> f(3.3, 4.4)
+8.0
+```
+
+
+
+
+#### Useful functions operates on methods ####
+
+|Function|Description|Example|
+|:-------|:----------|:------|
+|`methods(f)`|Show all methods of `f` with their argument types.||
+
 
 
 
