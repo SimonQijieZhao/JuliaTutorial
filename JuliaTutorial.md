@@ -1466,7 +1466,25 @@ julia> f(3.3, 4.4)
 8.0
 ```
 
+Like [parametric types](#parametric-types), methods can also be
+parametric.  Type parameters should be declared within curly brackets
+after the method name and before the argument tuple:
 
+```Julia
+julia> same_type_number{T}(x::T, y::T) = T <: Number;
+
+julia> same_type_number(x, y) = false
+same_type_number (generic function with 2 methods)
+
+julia> same_type_number(1, 2.0)
+false
+
+julia> same_type_number(1, 2)
+true
+```
+
+The second method for `same_type_number` above is used as a catch-all
+method when the two arguments aren't the same type.
 
 
 #### Useful functions operates on methods ####
