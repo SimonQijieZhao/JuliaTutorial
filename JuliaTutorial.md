@@ -50,6 +50,7 @@ mnemonic.
 	- [Useful functions operate on types](#useful-functions-operate-on-types)
   + [Methods](#methods)
     - [Useful functions operate on methods](#useful-functions-operate-on-methods)
+  + [Constructors](#constructors)
   + [Tasks](#tasks)
   + [Exception handling](#exception-handling)
 * [Write your own package](#write-your-own-package)
@@ -1263,7 +1264,7 @@ true
 
 ##### Type unions #####
 
-A type unios is a special abstract type, much like `union` in C, that
+A type union is a special abstract type, much like `union` in C, that
 can be constructed by the `Union` function:
 
 ```Julia
@@ -1494,7 +1495,34 @@ method when the two arguments aren't the same type.
 |`methods(f)`|Show all methods of `f` with their argument types.||
 
 
+### Constructors ###
 
+```Julia
+julia> type OrderedPair
+         x::Real
+		 y::Real
+
+         OrderedPair(a,b,c) = a > b ? error("out of order") : new(a+c,b+c)
+       end
+
+julia> a = OrderedPair(1, 2, 3)
+OrderedPair(4,5)
+
+julia> a.x = 10
+10
+
+julia> a
+OrderedPair(10,5)
+
+julia> b = OrderedPair(1, 2)
+ERROR: no method OrderedPair(Int64,Int64)
+
+julia> OrderedPair(a) = OrderedPair(a, a, 2a)
+OrderedPair (constructor with 2 methods)
+
+julia> c = OrderedPair(1)
+OrderedPair(3,3)
+```
 
 
 ### Tasks ###
