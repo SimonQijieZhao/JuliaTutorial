@@ -1497,27 +1497,50 @@ method when the two arguments aren't the same type.
 
 ### Constructors ###
 
+Constructors are used for creating new objects of a type.  By default,
+type objects serve as constructor functions, which means that a new
+object of a type can be created by following the type name by a tuple
+of field values at the same order of the fields (see
+[Composite types](#composite-types)).
+
+There are two ways that a constructor can be defined.
+
+One way is defining a constructor after the definition of the type.
+These kind of constructors are called outer constructors.  It is much
+like defining a new method for a function, except that it must use one
+of the already existed constructors for creating a new object.  And
+generally, the type name followed by a tuple of the field names is the
+automatically provided default one.
+
+And the other is defining a constructor inside the definition of the
+type.  These kind of constructors are called inner constructors.  Once
+a inner constructor is defined, the automatically provided default
+constructors mentioned above will not provided.
+
+
 ```Julia
 julia> type OrderedPair
          x::Real
 		 y::Real
 
+         # a inner constructor that makes sure the first argument
+		 # is less than or equal to the second argument
          OrderedPair(a,b,c) = a > b ? error("out of order") : new(a+c,b+c)
        end
 
 julia> a = OrderedPair(1, 2, 3)
 OrderedPair(4,5)
 
-julia> a.x = 10
+julia> a.x = 10  # But one can make x greater than y
 10
 
 julia> a
 OrderedPair(10,5)
 
-julia> b = OrderedPair(1, 2)
+julia> b = OrderedPair(1, 2)  # no default constructor if a inner one exists
 ERROR: no method OrderedPair(Int64,Int64)
 
-julia> OrderedPair(a) = OrderedPair(a, a, 2a)
+julia> OrderedPair(a) = OrderedPair(a, a, 2a) # outer constructor
 OrderedPair (constructor with 2 methods)
 
 julia> c = OrderedPair(1)
@@ -1552,6 +1575,7 @@ comming out.
 |2014-06-19|279|5323|
 |2014-07-21|377|5413|
 |2014-08-21|401|5516|
+|2014-09-21|435|5633|
 
 
 We can get the number of available packages of Julia and R,
