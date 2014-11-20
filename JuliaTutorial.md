@@ -205,7 +205,13 @@ If you are not sure how to use `help()`, just type:
 for more details.
 
 `apropos()` is a more flexible function that can be used to search
-documentation for functions related to a specific string.
+documentation for functions related to a specific string.  For
+example, if one want to find out what functions there are to do with
+"string", one can type:
+
+```Julia
+apropos("string")
+```
 
 And the blog [Julia Helps](http://www.juliabloggers.com/julia-helps/)
 gives a good summary about getting help from Julia itself.
@@ -299,7 +305,7 @@ letter in English alphabet, or underscore.
 As a dynamic programming language, there is no restriction for a
 variable in Julia to be of a fixed type after introduced in a scope.
 In other words, a variable can be assigned to a value of different
-type from its previous one, excpet that in a local scope, we can add a
+type from its previous one, except that in a local scope, we can add a
 type annotation to a variable to restrain it from being assigned to a
 value of a different type.
 
@@ -433,14 +439,20 @@ julia> a[1:3]
 "Hel"
 ```
 
-However, when the characters in a string aren't in ASCII.  The default
+However, when the characters in a string aren't in ASCII, the default
 encoding of Julia --- UTF-8 --- allows those characters represented
 with multiple bytes, so that indexing a string may not get a valid
 character.
 
 ```Julia
+julia> a = "∀x ∃y"
+"∀x ∃y"
+
 julia> s = "\u2200x \u2203y"
 "∀x ∃y"
+
+julia> a == s
+true
 
 julia> s[1]
 '∀'
@@ -457,7 +469,8 @@ julia> s[4]
 'x'
 ```
 
-And the common way to iterate through the characters in a string is:
+So the common and effective way to iterate through the characters in a
+string is:
 
 ```Julia
 julia> for c in s
@@ -1183,6 +1196,34 @@ And I think no real code would be written this way.  It is only for
 illustration.  And the pratical usage of this behaviour of logical
 operators are well demonstrated by the factorial routine in the
 [Julia manual - Short-Circuit Evaluation](http://docs.julialang.org/en/latest/manual/control-flow/#short-circuit-evaluation)
+
+As mnemonic, one can think:
+
+```Julia
+(a || b)
+```
+
+as
+
+```Julia
+if !a
+  b
+end
+```
+
+and
+
+```Julia
+(a && b)
+```
+
+as
+
+```Julia
+if a
+  b
+end
+```
 
 ### Types ###
 
