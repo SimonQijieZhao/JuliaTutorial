@@ -1546,17 +1546,17 @@ of field values at the same order of the fields (see
 
 There are two ways that a constructor can be defined.
 
-One way is defining a constructor after the definition of the type.
-These kind of constructors are called outer constructors.  It is much
-like defining a new method for a function, except that it must use one
-of the already existed constructors for creating a new object.  And
-generally, the type name followed by a tuple of the field names is the
-automatically provided default one.
+* One way is defining a constructor after the definition of the type.
+  These kind of constructors are called **outer constructors**.  It is
+  much like defining a new method for a function, except that it must
+  use one of the already existed constructors for creating a new
+  object.  And generally, the type name followed by a tuple of the
+  field names is the automatically provided default one.
 
-And the other is defining a constructor inside the definition of the
-type.  These kind of constructors are called inner constructors.  Once
-a inner constructor is defined, the automatically provided default
-constructors mentioned above will not provided.
+* And the other is defining a constructor inside the definition of the
+  type.  These kind of constructors are called **inner constructors**.
+  Once a inner constructor is defined, the automatically provided
+  default constructors mentioned above will not provided.
 
 
 ```Julia
@@ -1617,7 +1617,7 @@ comming out.
 |2014-07-21|377|5413|
 |2014-08-21|401|5516|
 |2014-09-21|435|5633|
-
+|2014-11-21|477|5775|
 
 We can get the number of available packages of Julia and R,
 respectively by the following Linux shell scripts.
