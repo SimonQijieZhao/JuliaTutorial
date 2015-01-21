@@ -1618,6 +1618,7 @@ comming out.
 |2014-08-21|401|5516|
 |2014-09-21|435|5633|
 |2014-11-21|477|5775|
+|2015-01-21|536|5954|
 
 We can get the number of available packages of Julia and R,
 respectively by the following Linux shell scripts.
