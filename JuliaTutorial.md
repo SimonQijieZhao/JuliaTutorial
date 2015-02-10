@@ -61,7 +61,11 @@ mnemonic.
 ## Introduction ##
 
 [Julia](http://julialang.org/) is a fast dynamic programming language
-for technical computing.
+for technical computing.  With modern language design and compiler
+techniques, Julia aims to create an unprecedented combination of
+easy-to-use, power, and efficiency in a single language, providing
+ease and expressiveness in the same way as languages such as R and
+Python, and also good performance like C.
 
 ## Installation ##
 
