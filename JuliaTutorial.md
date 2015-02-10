@@ -169,12 +169,11 @@ or **Ctrl-d** to quit back to shell.
                    _
        _       _ _(_)_     |  A fresh approach to technical computing
       (_)     | (_) (_)    |  Documentation: http://docs.julialang.org
-       _ _   _| |_  __ _   |  Type "help()" to list help topics
+       _ _   _| |_  __ _   |  Type "help()" to help.
       | | | | | | |/ _` |  |
-      | | |_| | | | (_| |  |  Version 0.2.1 (2014-02-11 06:30 UTC)
-     _/ |\__'_|_|_|\__'_|  | 
+      | | |_| | | | (_| |  |  Version 0.3.5 (2015-01-08 22:33 UTC)
+     _/ |\__'_|_|_|\__'_|  |  Official http://julialang.org release
     |__/                   |  x86_64-linux-gnu
-    
     
     ```
 
