@@ -76,13 +76,14 @@ To install the current stable version of Julia, one need to use the
 to sync with the latest stable version of Julia (See
 [Julia Downloads](http://julialang.org/downloads/) and
 [Installation of Juno, The Julia IDE](http://junolab.org/docs/install.html)
-for more details).
+for more details). (Note: In this tutorial, we use "**$ **" like below
+as the prompt for shell.)
 
 ```Shell
-sudo add-apt-repository ppa:staticfloat/juliareleases
-sudo add-apt-repository ppa:staticfloat/julia-deps
-sudo apt-get update
-sudo apt-get install julia
+$ sudo add-apt-repository ppa:staticfloat/juliareleases
+$ sudo add-apt-repository ppa:staticfloat/julia-deps
+$ sudo apt-get update
+$ sudo apt-get install julia
 ```
 
 
@@ -97,30 +98,32 @@ install [IPython](http://ipython.org/) first (See
 details.):
 
 ```Shell
-sudo apt-get install ipython-notebook python-matplotlib \
-                     python-scipy python-pandas \
-					 python-sympy python-nose
+$ sudo apt-get install ipython-notebook python-matplotlib \
+                       python-scipy python-pandas \
+                       python-sympy python-nose
 ```
 
 Thereafter, in shell terminal, enter:
 
 ```Shell
-julia
+$ julia
 ```
 
-to get into a Julia command line session, within which type:
+to get into a Julia command line session, within which type: (Note: In
+this tutorial, we use "**julia> **" like below as the prompt for
+Julia)
 
 ```Julia
-Pkg.update()
-Pkg.add("IJulia")
-Pkg.add("PyPlot")
+julia> Pkg.update()
+julia> Pkg.add("IJulia")
+julia> Pkg.add("PyPlot")
 ```
 
 to install IJulia and related packages, and type **Ctrl-d** to quit
 the session.  Finally, you can type in shell terminal:
 
 ```Shell
-ipython notebook --profile julia
+$ ipython notebook --profile julia
 ```
 
 to run Julia in IJulia notebook.
@@ -138,13 +141,13 @@ to run Julia in IJulia notebook.
 In shell terminal, just type:
 
 ```Shell
-julia
+$ julia
 ```
 
 to get into the interactive session of Julia, within which you type:
 
 ```Julia
-quit()
+julia> quit()
 ```
 
 or **Ctrl-d** to quit back to shell.
@@ -184,20 +187,20 @@ With the `help()` function, one can query the documentation for a
 specific function, macro, or variable.  For example,
 
 ```Julia
-help(println)
+julia> help(println)
 ```
 
 Alternatively, we can use `?` as a short hand for the `help()`
 function:
 
 ```Julia
-?println
+julia> ?println
 ```
 
 If you are not sure how to use `help()`, just type:
 
 ```Julia
-?help
+julia> ?help
 ```
 
 for more details.
@@ -208,7 +211,7 @@ example, if one want to find out what functions there are to do with
 "string", one can type:
 
 ```Julia
-apropos("string")
+julia> apropos("string")
 ```
 
 And the blog [Julia Helps](http://www.juliabloggers.com/julia-helps/)
@@ -232,7 +235,7 @@ A Julia script file has **.jl** as its extension.
     then in a Julia session, type:
 
     ```Julia
-    include("hello.jl")
+    julia> include("hello.jl")
     ```
 
     `Hello, world!` will be printed out.
@@ -241,14 +244,14 @@ A Julia script file has **.jl** as its extension.
     **hello.jl**, type:
 
     ```Shell
-    julia hello.jl
+    $ julia hello.jl
     ```
 
 3.  To execute a short code within shell command line, we could use
     the option `-e` for command `julia`:
 
     ```Shell
-    julia -e 'println("Hello, world!")'
+    $ julia -e 'println("Hello, world!")'
     ```
 
 4.  To execute a Julia script in shell with one or more command line
@@ -264,11 +267,19 @@ A Julia script file has **.jl** as its extension.
     then in shell, type:
 
     ```Shell
-    julia hello2.jl Simon
+    $ julia hello2.jl Simon
     ```
 
     will output `Hello, Simon!`.
 
+5. Or one can also provide command line arguments for short code
+   expressions:
+   
+   ```Shell
+   $ julia -e 'println("Hello, ", ARGS[1], "!")' Simon
+   ```
+
+   which has the same output as above.
 
 ### Run shell command in Julia ###
 
@@ -276,14 +287,14 @@ A shell command should be wrapped in backticks "**`**", and we can use
 function `run()` to run the command within them.  For example,
 
 ```Julia
-run(`echo Hello`)
+julia> run(`echo Hello`)
 ```
 
 However, the output will automatically be dumped to the screen.  We
 can assign the output to a variable by function `readall()`:
 
 ```Julia
-a = readall(`echo Hello`)
+julia> a = readall(`echo Hello`)
 ```
 
 
