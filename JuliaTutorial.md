@@ -71,17 +71,12 @@ Python, and also good performance like C.
 
 ### On Ubuntu ###
 
-To install the current stable version of Julia, just type:
-
-```Shell
-sudo apt-get install julia
-```
-
-If you are on an older Ubuntu (before Ubuntu 14.04), then you need to
-use the
+To install the current stable version of Julia, one need to use the
 [Julia PPA (Personal Package Archives)](https://launchpad.net/~staticfloat)
 to sync with the latest stable version of Julia (See
-[Julia Downloads](http://julialang.org/downloads/) for more details).
+[Julia Downloads](http://julialang.org/downloads/) and
+[Installation of Juno, The Julia IDE](http://junolab.org/docs/install.html)
+for more details).
 
 ```Shell
 sudo add-apt-repository ppa:staticfloat/juliareleases
