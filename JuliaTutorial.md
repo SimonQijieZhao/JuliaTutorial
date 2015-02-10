@@ -76,8 +76,8 @@ To install the current stable version of Julia, one need to use the
 to sync with the latest stable version of Julia (See
 [Julia Downloads](http://julialang.org/downloads/) and
 [Installation of Juno, The Julia IDE](http://junolab.org/docs/install.html)
-for more details). (Note: In this tutorial, we use "**$ **" like below
-as the prompt for shell.)
+for more details). (**Note**: In this tutorial, we use "**$**" like
+below as the prompt for shell.)
 
 ```Shell
 $ sudo add-apt-repository ppa:staticfloat/juliareleases
@@ -109,9 +109,9 @@ Thereafter, in shell terminal, enter:
 $ julia
 ```
 
-to get into a Julia command line session, within which type: (Note: In
-this tutorial, we use "**julia> **" like below as the prompt for
-Julia)
+to get into a Julia command line session, within which type:
+(**Note**: In this tutorial, we use "**julia>**" like below as the
+prompt for Julia)
 
 ```Julia
 julia> Pkg.update()
@@ -180,6 +180,11 @@ or **Ctrl-d** to quit back to shell.
     
     ```
 
+5. For more about command **julia** itself, just type:
+
+   ```Shell
+   $ julia --help
+   ```
 
 ### Get help in REPL ###
 
@@ -288,6 +293,7 @@ function `run()` to run the command within them.  For example,
 
 ```Julia
 julia> run(`echo Hello`)
+Hello
 ```
 
 However, the output will automatically be dumped to the screen.  We
@@ -295,6 +301,10 @@ can assign the output to a variable by function `readall()`:
 
 ```Julia
 julia> a = readall(`echo Hello`)
+"Hello\n"
+
+julia> a
+"Hello\n"
 ```
 
 
@@ -309,12 +319,13 @@ julia> a = readall(`echo Hello`)
 ### Variables ###
 
 Like other languages, variable names in Julia must also begin with a
-letter in English alphabet, or underscore.
+letter in English alphabet, underscore, or a subset of Unicode code
+points greater than 00A0.
 
 As a dynamic programming language, there is no restriction for a
 variable in Julia to be of a fixed type after introduced in a scope.
 In other words, a variable can be assigned to a value of different
-type from its previous one, except that in a local scope, we can add a
+type from its previous one, except that in a local scope we can add a
 type annotation to a variable to restrain it from being assigned to a
 value of a different type.
 
@@ -331,6 +342,20 @@ x = "Hello"      # x is re-assigned to a string "Hello"
 function foo()
   x::Int32 = 10  # prevent x from being assigned to values of non-Int32
 end
+```
+
+For expressiveness, one can use Unicode names (in UTF-8 encoding) as
+variable names, which, I think, is good for math symbols.  One can
+enter these math symbols by typing the backslash LaTeX symbol name
+followed by Tab.  For example, δ can be entered by typing "\delta"
+and followed by Tab key.
+
+```Julia
+julia> δ = 0.125
+0.125
+
+julia> δ
+0.125
 ```
 
 ### Built-in numeric primitives ###
