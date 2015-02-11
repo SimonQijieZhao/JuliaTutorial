@@ -20,6 +20,7 @@ mnemonic.
   + [Run shell command in Julia](#run-shell-command-in-julia)
   + [Comment code](#comment-code)
   + [Variables](#variables)
+    - [Some special internal variables](#some-special-internal-variables)
   + [Built-in numeric primitives](#built-in-numeric-primitives)
   + [Array](#array)
   + [String](#string)
@@ -358,6 +359,13 @@ julia> δ
 0.125
 ```
 
+#### Some special internal variables ####
+
+|Variable|Description|Example|
+|:-------|:----------|:------|
+|`WORD_SIZE`|Indicate whether the target system is 32-bit or 64-bit||
+
+
 ### Built-in numeric primitives ###
 
 For basic arithmetic, Julia provides a series of built-in numeric
@@ -365,6 +373,9 @@ types, with explicit names telling how many bits they use to represent
 a number:
 
 ```Julia
+# Unsigned integers can be represented by 0x followed by hexadecimal
+# digits, or 0b followed by binary digits, or 0o followed by octal
+# digits, such as 26 can be represented as 0x1a, 0b11010, or 0o32.
 Int8        Uint8
 Int16       Uint16
 Int32       Uint32
@@ -374,14 +385,14 @@ Int128      Uint128
 Bool  # false or true with 8 bits
 
 Char # Unicode characters with 32 bits, denoted by enclosing printable
-     # characters in single quotes, such as `'x'`, or escaped `\u` or
-     # `\U` hexadecimal input forms, such as `'\u78'`, which is the
-     # same as `'x'`.
+     # characters in single quotes, such as 'x', or escaped '\u' or
+     # '\U' hexadecimal input forms, such as '\u78', which is the
+     # same as 'x'.
 
 # There is no type named Double as in other programming languages
+Float64  # Floating-point numbers are by default of type Float64, such as 25, 2.5e1
+Float32  # numbers of type Float32 can be represented by writing an 'f' in place of 'e', such as 2.5f1
 Float16
-Float32
-Float64
 ```
 
 A few useful functions that can work with these basic built-in types:
@@ -393,7 +404,11 @@ A few useful functions that can work with these basic built-in types:
 |`typemax(x)`|The highest value representable by the given numeric type|`typemax(Int32)` returns `2147483647`|
 |`bits(x)`|A string giving the literal bit representation of a number|`bits(0x7)` returns `"00000111"`|
 |`num2hex(x)`|A hexadecimal string of the binary representation of a floating point number|`num2hex(1.0)` returns `"3ff0000000000000"`|
-|`eps(x)`|The distance between `x` and the next larger representable floating-point value of the same type as `x`|`eps(Float32)` returns 1.1920929f-7|
+|`bin`|Convert an integer to a binary string|`bin(10)` returns `"1010"`|
+|`oct`|Convert an integer to an octal string|`oct(10)` returns `"12"`|
+|`hex`|Convert an integer to a hexadecimal string|`hex(10)` returns `"a"`|
+|`dec`|Convert an integer to a decimal string|`dec(0xa)` returns `"10"`|
+|`eps(x)`|The distance between `x` and the next larger representable floating-point value of the same type as `x`|`eps(Float32)` returns `1.1920929f-7`|
 
 And there are a same number of functions with the same names but in
 lower case for converting a value to corresponding numeric types.  For
@@ -580,9 +595,10 @@ The basic arthmetic and bitwise operations are similar to other
 programming languages, such as C:
 
 ```Julia
-+ - * /
-^ # power
-% # remainder
++ - */
+\ # inverse divide, e.g., x\y is equivalent to y/x
+^ # power, e.g., 2^3 equals to 8
+% # remainder, e.g., 3%2 equals to 1
 
 ! # negation
 
@@ -596,7 +612,12 @@ programming languages, such as C:
 +=  -=  *=  /= %=  ^=  &=  |=  $=  >>>=  >>=  <<=
 
 # comparisons
-== != < <= > >=
+==
+<
+<= ≤  # Can be entered by typing "\le" followed by Tab
+>
+>= ≥  # Can be entered by typing "\ge" followed by Tab
+!= ≠  # Can be entered by typing "\ne" followed by Tab
 ```
 
 Special note should be taken when comparing `Inf`, `NaN`, see
