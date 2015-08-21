@@ -1666,15 +1666,16 @@ these two counterparts only by tracking the number of packages newly
 comming out.
 
 
-| Date |Julia|  R  |
-|:----:|----:|----:|
-|2014-06-19|279|5323|
-|2014-07-21|377|5413|
-|2014-08-21|401|5516|
-|2014-09-21|435|5633|
-|2014-11-21|477|5775|
-|2015-01-21|536|5954|
-|2015-05-21|629|6308|
+| Date     |Julia| R  |
+|:--------:|----:|---:|
+|2014-06-19|  279|5323|
+|2014-07-21|  377|5413|
+|2014-08-21|  401|5516|
+|2014-09-21|  435|5633|
+|2014-11-21|  477|5775|
+|2015-01-21|  536|5954|
+|2015-05-21|  629|6308|
+|2015-08-21|  702|6644|
 
 We can get the number of available packages of Julia and R,
 respectively by the following Linux shell scripts.
