@@ -70,6 +70,10 @@ Python, and also good performance like C.
 
 ## Installation ##
 
+More specific details can be found at
+[Julia Downloads](http://julialang.org/downloads/) and
+[Platform Specific Instructions for Installing Julia](http://julialang.org/downloads/platform.html).
+
 ### On Ubuntu ###
 
 To install Julia on Ubuntu, one need to use the
