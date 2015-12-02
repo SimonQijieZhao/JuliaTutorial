@@ -72,8 +72,13 @@ Python, and also good performance like C.
 
 ### On Ubuntu ###
 
+To install Julia on Ubuntu, one need to use the
+[Julia PPA (Personal Package Archives)](https://launchpad.net/~staticfloat).
+
+#### Install stable version ####
+
 To install the current stable version of Julia, one need to use the
-[Julia PPA (Personal Package Archives)](https://launchpad.net/~staticfloat)
+[Julia Releases PPA](https://launchpad.net/~staticfloat/+archive/ubuntu/juliareleases)
 to sync with the latest stable version of Julia (See
 [Julia Downloads](http://julialang.org/downloads/) and
 [Installation of Juno, The Julia IDE](http://junolab.org/docs/install.html)
@@ -87,6 +92,20 @@ $ sudo apt-get update
 $ sudo apt-get install julia
 ```
 
+#### Install development version ####
+
+Development version means the version of Julia is under heavy
+development and one might encounter various problems during usage.
+However, it brings new functionlities and features one might want to
+try.  To install the development version of Julia, one need to use the
+[Julia Nightlies PPA](https://launchpad.net/~staticfloat/+archive/ubuntu/julianightlies).
+
+```Shell
+$ sudo apt-add-repository ppa:staticfloat/julianightlies
+$ sudo apt-add-repository ppa:staticfloat/julia-deps
+$ sudo apt-get update
+$ sudo apt-get install julia
+```
 
 
 #### Additional software ####
