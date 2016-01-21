@@ -1702,6 +1702,7 @@ comming out.
 |2015-09-21|  742|6772|
 |2015-10-21|  782|6881|
 |2015-12-21|  797|7099|
+|2016-01-21|  861|7207|
 
 
 We can get the number of available packages of Julia and R,
