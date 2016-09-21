@@ -1711,16 +1711,22 @@ We can get the number of available packages of Julia and R,
 respectively by the following Linux shell scripts.
 
 ```Shell
-# Get the number of available packages of Julia
-expr $(curl -s https://github.com/JuliaLang/METADATA.jl | grep \
-"js-directory-link" | wc -l) - 5
+# Get the number of available packages of Julia from ``Metadata for registered Julia packages''
+expr $(git clone https://github.com/JuliaLang/METADATA.jl.git; ls METADATA.jl | wc -l) - 1; \
+rm -rf METADATA.jl
 
+# Or from Julia Package Listing.  This may not be the same as that from Metadata
+curl -s http://pkg.julialang.org/ | grep "<p>" | head -1 | cut -d'<' -f2 | cut -d' ' -f3
 ```
 
 ```Shell
-# Get the number of available packages of R
-expr $(curl -s http://cran.r-project.org/src/contrib/Archive/ | sed -n \
-'/Parent Directory/,$ p' | grep -c "</a>") - 1
+# Get the number of available packages of R from CRAN package list
+curl -s https://cran.r-project.org/web/packages/available_packages_by_name.html | \
+grep -F "<tr>" | wc -l
+
+# Or from METACRAN
+curl -s http://www.r-pkg.org/ | grep "active packages" | awk '{print $1}' | \
+awk 'BEGIN { FS=","} {print $1$2}'
 ```
 
 There is also a
