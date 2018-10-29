@@ -86,7 +86,7 @@ untar it, then make a symbolic link in `/usr/local/bin/` to
 this tutorial, we use "**$**" like below as the prompt for shell
 script.)
 
-```Shell
+```console
 $ wget https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.1-linux-x86_64.tar.gz
 $ tar xf julia-1.0.1-linux-x86_64.tar.gz
 $ sudo ln -s ./julia-1.0.1/bin/julia /usr/local/bin/julia
@@ -115,7 +115,8 @@ on [Julia Downloads](http://julialang.org/downloads/) and install it.
 
 ### Enter and quit Julia interactive session ###
 
-Open a terminal and type:
+Open a terminal and type (**Note**: In this tutorial, we use "**julia>**" like below as the
+prompt for Julia):
 
 ```Shell
 $ julia
