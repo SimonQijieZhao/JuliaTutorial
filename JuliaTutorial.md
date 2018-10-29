@@ -1,15 +1,13 @@
 # Julia Tutorial #
 
 Note that some terminologies may be slightly different from those from
-the [Julia Documentation](http://docs.julialang.org/en/latest/).  It
+the [Julia Documentation](http://docs.julialang.org/en/stable/).  It
 depends on my understanding and my opinions about what is a better
 mnemonic.
 
 * [Introduction](#introduction)
 * [Installation](#installation)
   + [On Ubuntu](#on-ubuntu)
-    - [Additional software](#additional-software)
-	  * [IJulia](#ijulia)
   + [On Mac](#on-mac)
   + [On Windows](#on-windows)
 * [A quick tour of Julia](#a-quick-tour-of-julia)
@@ -76,93 +74,48 @@ More specific details can be found at
 
 ### On Ubuntu ###
 
-To install Julia on Ubuntu, one need to use the
-[Julia PPA (Personal Package Archives)](https://launchpad.net/~staticfloat).
+Unfortunately, there is no Julia PPA for you to `sudo apt install`,
+though there was a [Julia PPA (Personal Package
+Archives)](https://launchpad.net/~staticfloat).
 
-#### Install stable version ####
-
-To install the current stable version of Julia, one need to use the
-[Julia Releases PPA](https://launchpad.net/~staticfloat/+archive/ubuntu/juliareleases)
-to sync with the latest stable version of Julia (See
-[Julia Downloads](http://julialang.org/downloads/) and
-[Installation of Juno, The Julia IDE](http://junolab.org/docs/install.html)
-for more details). (**Note**: In this tutorial, we use "**$**" like
-below as the prompt for shell.)
-
-```Shell
-$ sudo add-apt-repository ppa:staticfloat/juliareleases
-$ sudo add-apt-repository ppa:staticfloat/julia-deps
-$ sudo apt-get update
-$ sudo apt-get install julia
-```
-
-#### Install development version ####
-
-Development version means the version of Julia is under heavy
-development and one might encounter various problems during usage.
-However, it brings new functionlities and features one might want to
-try.  To install the development version of Julia, one need to use the
-[Julia Nightlies PPA](https://launchpad.net/~staticfloat/+archive/ubuntu/julianightlies).
+Now you need to download the "64-bit Generic Linux Binaries for x86"
+like
+[`julia-1.0.1-linux-x86_64.tar.gz`](https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.1-linux-x86_64.tar.gz),
+untar it, then make a symbolic link in `/usr/local/bin/` to
+`bin/julia` in the untared folder like `julia-1.0.1`.  (**Note**: In
+this tutorial, we use "**$**" like below as the prompt for shell
+script.)
 
 ```Shell
-$ sudo apt-add-repository ppa:staticfloat/julianightlies
-$ sudo apt-add-repository ppa:staticfloat/julia-deps
-$ sudo apt-get update
-$ sudo apt-get install julia
+$ wget https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.1-linux-x86_64.tar.gz
+$ tar xf julia-1.0.1-linux-x86_64.tar.gz
+$ sudo ln -s ./julia-1.0.1/bin/julia /usr/local/bin/julia
 ```
 
-
-#### Additional software ####
-
-##### IJulia #####
-
-To use [IJulia](https://github.com/JuliaLang/IJulia.jl), you have to
-install [IPython](http://ipython.org/) first (See
-[Installing IPython](http://ipython.org/install.html) for more
-details.):
-
-```Shell
-$ sudo apt-get install ipython-notebook python-matplotlib \
-                       python-scipy python-pandas \
-                       python-sympy python-nose
-```
-
-Thereafter, in shell terminal, enter:
-
-```Shell
-$ julia
-```
-
-to get into a Julia command line session, within which type:
-(**Note**: In this tutorial, we use "**julia>**" like below as the
-prompt for Julia)
-
-```Julia
-julia> Pkg.update()
-julia> Pkg.add("IJulia")
-julia> Pkg.add("PyPlot")
-```
-
-to install IJulia and related packages, and type **Ctrl-d** to quit
-the session.  Finally, you can type in shell terminal:
-
-```Shell
-$ ipython notebook --profile julia
-```
-
-to run Julia in IJulia notebook.
+If you want to use an IDE for programming with Julia, see [Juno, A
+flexible IDE for the 21st century](http://junolab.org) for more
+details.
 
 
 ### On Mac ###
 
+Download the `.dmg` file such as
+[`julia-1.0.1-mac64.dmg`](https://julialang-s3.julialang.org/bin/mac/x64/1.0/julia-1.0.1-mac64.dmg)
+on [Julia Downloads](http://julialang.org/downloads/) and install it.
+
+
 ### On Windows ###
+
+Download the `.exe` file such as
+[`julia-1.0.1-win64.exe`](https://julialang-s3.julialang.org/bin/winnt/x64/1.0/julia-1.0.1-win64.exe)
+on [Julia Downloads](http://julialang.org/downloads/) and install it.
 
 
 ## A quick tour of Julia ##
 
 ### Enter and quit Julia interactive session ###
 
-In shell terminal, just type:
+Open a terminal and type:
 
 ```Shell
 $ julia
@@ -1736,7 +1689,8 @@ where you can search for specific package of Julia.
 ## Useful resources ##
 
 * [The Offical Website for Julia Programming Language](http://julialang.org/)
-* [The Latest Manual for Julia Lang](http://docs.julialang.org/en/latest/manual/)
+* [The Latest Manual for Julia Lang](http://docs.julialang.org/en/latest/)
+* [The Stable Manual for Julia Lang](http://docs.julialang.org/en/stable/)
 * [Julia Bloggers](http://www.juliabloggers.com/) gathers blogs about
   Julia.  One can also
   [submit their RSS feed](http://www.juliabloggers.com/julia-bloggers-submit-rss-feed/)
