@@ -115,17 +115,18 @@ on [Julia Downloads](http://julialang.org/downloads/) and install it.
 
 ### Enter and quit Julia interactive session ###
 
-Open a terminal and type (**Note**: In this tutorial, we use "**julia>**" like below as the
-prompt for Julia):
+Open a terminal and type:
 
-```Shell
+```console
 $ julia
 ```
 
 to get into the interactive session of Julia, within which you type:
+(**Note**: In this tutorial, we use "**julia>**" like below as the
+prompt for Julia)
 
 ```Julia
-julia> quit()
+julia> exit()
 ```
 
 or **Ctrl-d** to quit back to shell.
@@ -135,16 +136,31 @@ or **Ctrl-d** to quit back to shell.
 
 1.  Once you have typed a complete expression, pressing **Enter** will
     get the expression be evaluated and the value will be printed out.
-
-2.  A trailing semicolon `;` will suppress the output for the
+    A trailing semicolon `;` will suppress the output for the
     evaluated value.
+	
+    ```Julia
+    julia> 1+2
+    3
+    
+    julia> 1+2;
+    
+    julia>
+    ```
 
-3.  However, you can use the variable `ans`, which is only available
+2.  However, you can use the variable `ans`, which is only available
     in REPL, to get the value of the last evaluated expression, no
     matter if it is suppressed or not.
 
-4.  You can type `julia -q` to suppress the display of startup
-    banner (like below) when lauch the REPL.
+    ```Julia
+    julia> 1+2;
+
+    julia> ans
+    3
+    ```
+
+3.  You can type `julia -q` to suppress the display of startup banner
+    (like below) when lauching the REPL.
 
     ```
                    _
@@ -158,9 +174,9 @@ or **Ctrl-d** to quit back to shell.
     
     ```
 
-5. For more about command **julia** itself, just type:
+4. For more about command **julia** itself, just type:
 
-   ```Shell
+   ```console
    $ julia --help
    ```
 
@@ -219,21 +235,20 @@ A Julia script file has **.jl** as its extension.
 
     ```Julia
     julia> include("hello.jl")
+    Hello, world!
     ```
-
-    `Hello, world!` will be printed out.
 
 2.  To execute a Julia script in shell, for example, previous
     **hello.jl**, type:
 
-    ```Shell
+    ```console
     $ julia hello.jl
     ```
 
 3.  To execute a short code within shell command line, we could use
     the option `-e` for command `julia`:
 
-    ```Shell
+    ```console
     $ julia -e 'println("Hello, world!")'
     ```
 
@@ -249,17 +264,17 @@ A Julia script file has **.jl** as its extension.
 
     then in shell, type:
 
-    ```Shell
+    ```console
     $ julia hello2.jl Simon
+    Hello, Simon!
     ```
-
-    will output `Hello, Simon!`.
 
 5. Or one can also provide command line arguments for short code
    expressions:
    
-   ```Shell
+   ```console
    $ julia -e 'println("Hello, ", ARGS[1], "!")' Simon
+   Hello, Simon!
    ```
 
    which has the same output as above.
